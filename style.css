@@ -316,8 +316,16 @@ h2 {
     color: #3498db;
 }
 
-/* Stopka */
+#space-defenders {
+    position: relative;
+    padding-bottom: 150px; /* Miejsce na stopkę */
+}
+
 footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background: #050510;
     padding: 2rem;
     text-align: center;
@@ -454,6 +462,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
