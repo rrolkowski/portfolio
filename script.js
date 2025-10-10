@@ -159,37 +159,34 @@ document.querySelectorAll('.game-card').forEach(card => {
 // Efekt Matrix
 function createMatrixEffect() {
     const matrixBg = document.getElementById('matrix-bg');
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const chars = '01010101010101010101ABCDEFGHIJKLMNOPQRSTUVWXYZ$$$%%%&&&***';
     
     function createChar() {
         const char = document.createElement('div');
         char.className = 'matrix-char';
         char.textContent = chars[Math.floor(Math.random() * chars.length)];
         char.style.left = Math.random() * 100 + 'vw';
-        char.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        char.style.opacity = Math.random() * 0.5 + 0.3;
+        char.style.animationDuration = (Math.random() * 2 + 1) + 's'; /* szybsze */
+        char.style.opacity = Math.random() * 0.7 + 0.3;
+        char.style.fontSize = (Math.random() * 6 + 14) + 'px'; /* różne rozmiary */
         
         matrixBg.appendChild(char);
         
-        // Usuń znak po animacji
         setTimeout(() => {
             if (char.parentNode) {
                 char.parentNode.removeChild(char);
             }
-        }, 5000);
+        }, 3000);
     }
     
-    // Twórz nowe znaki co 100ms
-    setInterval(createChar, 100);
+    // Więcej znaków
+    setInterval(createChar, 50);
     
-    // Początkowe znaki
-    for (let i = 0; i < 50; i++) {
-        setTimeout(createChar, i * 100);
+    for (let i = 0; i < 100; i++) {
+        setTimeout(createChar, i * 50);
     }
 }
 
-// Uruchom efekt Matrix po załadowaniu strony
-window.addEventListener('load', createMatrixEffect);
 
 
 
