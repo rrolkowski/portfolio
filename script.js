@@ -151,57 +151,64 @@ function scrollToGame(gameId) {
     }
 }
 
-// Inicjalizacja galerii
+// Inicjalizacja galerii - DLA WSZYSTKICH SEKCJI
 document.addEventListener('DOMContentLoaded', function() {
-    const mainImageContainer = document.querySelector('.main-image');
-    const smallImages = document.querySelectorAll('.small-img');
-    
-    // Na start - ustaw pierwszy obrazek jako aktywny w ekranie poglądowym
-    const firstSmallImage = smallImages[0];
-    if (firstSmallImage) {
-        const imageSrc = firstSmallImage.getAttribute('data-image');
+    // Dla każdej galerii na stronie
+    document.querySelectorAll('.images-column').forEach(imagesColumn => {
+        const mainImageContainer = imagesColumn.querySelector('.main-image');
+        const smallImages = imagesColumn.querySelectorAll('.small-img');
         
-        // Utwórz obrazek w ekranie poglądowym
-        const mainImg = document.createElement('img');
-        mainImg.src = imageSrc;
-        mainImg.alt = "Podgląd gry";
-        mainImg.onerror = function() {
-            this.style.display = 'none';
-            mainImageContainer.querySelector('.image-placeholder-large').style.display = 'flex';
-        };
-        
-        // Wyczyść ekran poglądowy i dodaj nowy obrazek
-        mainImageContainer.innerHTML = '';
-        mainImageContainer.appendChild(mainImg);
-        
-        // Zaznacz pierwszy obrazek jako aktywny
-        firstSmallImage.classList.add('active');
-    }
-    
-    // Kliknięcie w mały obrazek
-    smallImages.forEach(smallImg => {
-        smallImg.addEventListener('click', function() {
-            const imageSrc = this.getAttribute('data-image');
+        // Na start - ustaw pierwszy obrazek jako aktywny
+        const firstSmallImage = smallImages[0];
+        if (firstSmallImage && mainImageContainer) {
+            const imageSrc = firstSmallImage.getAttribute('data-image');
             
-            // Zmień obrazek w ekranie poglądowym
-            const mainImg = mainImageContainer.querySelector('img');
-            if (mainImg) {
-                mainImg.src = imageSrc;
-            } else {
-                // Jeśli nie ma obrazka, utwórz nowy
-                const newMainImg = document.createElement('img');
-                newMainImg.src = imageSrc;
-                newMainImg.alt = "Podgląd gry";
-                mainImageContainer.innerHTML = '';
-                mainImageContainer.appendChild(newMainImg);
-            }
+            // Utwórz obrazek w ekranie poglądowym
+            const mainImg = document.createElement('img');
+            mainImg.src = imageSrc;
+            mainImg.alt = "Podgląd gry";
+            mainImg.onerror = function() {
+                this.style.display = 'none';
+                mainImageContainer.querySelector('.image-placeholder-large').style.display = 'flex';
+            };
             
-            // Zaznacz aktywny obrazek
-            smallImages.forEach(img => img.classList.remove('active'));
-            this.classList.add('active');
+            // Wyczyść ekran poglądowy i dodaj nowy obrazek
+            mainImageContainer.innerHTML = '';
+            mainImageContainer.appendChild(mainImg);
+            
+            // Zaznacz pierwszy obrazek jako aktywny
+            firstSmallImage.classList.add('active');
+        }
+        
+        // Kliknięcie w mały obrazek (dla tej konkretnej galerii)
+        smallImages.forEach(smallImg => {
+            smallImg.addEventListener('click', function() {
+                const imageSrc = this.getAttribute('data-image');
+                const currentMainImage = this.closest('.images-column').querySelector('.main-image');
+                
+                if (currentMainImage) {
+                    // Zmień obrazek w ekranie poglądowym
+                    const mainImg = currentMainImage.querySelector('img');
+                    if (mainImg) {
+                        mainImg.src = imageSrc;
+                    } else {
+                        // Jeśli nie ma obrazka, utwórz nowy
+                        const newMainImg = document.createElement('img');
+                        newMainImg.src = imageSrc;
+                        newMainImg.alt = "Podgląd gry";
+                        currentMainImage.innerHTML = '';
+                        currentMainImage.appendChild(newMainImg);
+                    }
+                    
+                    // Zaznacz aktywny obrazek (tylko w tej galerii)
+                    smallImages.forEach(img => img.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
         });
     });
 });
+
 
 
 
