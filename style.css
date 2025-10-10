@@ -317,7 +317,7 @@ h2 {
 }
 
 /* Stopka */
-#footer {
+footer {
     background: #050510;
     padding: 2rem;
     text-align: center;
@@ -454,6 +454,7 @@ h2 {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
