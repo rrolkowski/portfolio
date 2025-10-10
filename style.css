@@ -207,12 +207,7 @@ h2 {
 
 /* Style dla sekcji szczegółów gier */
 .game-detail-section {
-    display: none;
     background: linear-gradient(135deg, #0c0c1d 0%, #1a1a3a 100%);
-}
-
-.game-detail-section.active {
-    display: flex;
 }
 
 .game-detail-container {
@@ -459,3 +454,4 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
