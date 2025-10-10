@@ -156,6 +156,21 @@ document.querySelectorAll('.game-card').forEach(card => {
     card.style.cursor = 'pointer';
 });
 
+// Obsługa kliknięcia w małe obrazki
+document.querySelectorAll('.small-image').forEach(smallImg => {
+    smallImg.addEventListener('click', function() {
+        const smallImgSrc = this.querySelector('img').src;
+        const mainImage = this.closest('.game-detail-layout').querySelector('.game-detail-image img');
+        
+        if (mainImage && smallImgSrc) {
+            // Zamiana obrazków
+            const tempSrc = mainImage.src;
+            mainImage.src = smallImgSrc;
+            this.querySelector('img').src = tempSrc;
+        }
+    });
+});
+
 
 
 
