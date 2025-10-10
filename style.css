@@ -471,17 +471,17 @@ footer {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: -1;
-    background: linear-gradient(to bottom, rgba(10, 10, 22, 0.9), rgba(10, 10, 22, 0.95));
+    z-index: 9999; /* ZMIANA: wyższy z-index */
+    background: transparent; /* ZMIANA: przezroczyste tło */
 }
 
 .matrix-char {
     position: absolute;
     color: #00ff41;
     font-family: 'Courier New', monospace;
-    font-size: 14px;
-    opacity: 0.7;
-    text-shadow: 0 0 5px #00ff41;
+    font-size: 18px; /* ZMIANA: większe znaki */
+    opacity: 0.8; /* ZMIANA: bardziej widoczne */
+    text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41; /* ZMIANA: mocniejszy blask */
     animation: matrix-fall linear infinite;
 }
 
@@ -490,6 +490,7 @@ footer {
         transform: translateY(100vh);
     }
 }
+
 
 
 
