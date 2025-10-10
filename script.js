@@ -133,8 +133,27 @@ function showGameDetail(gameId) {
     }
 }
 
+// Proste przewijanie do sekcji gry
+function scrollToGame(gameId) {
+    const targetSection = document.getElementById(gameId);
+    if (targetSection) {
+        targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        // Aktualizuj currentSection dla scroll snapping
+        sections.forEach((section, index) => {
+            if (section.id === gameId) {
+                currentSection = index;
+            }
+        });
+    }
+}
+
 // Obsługa kliknięcia w kartę gry
 document.querySelectorAll('.game-card').forEach(card => {
     card.style.cursor = 'pointer';
 });
+
 
