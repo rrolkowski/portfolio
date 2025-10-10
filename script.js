@@ -151,7 +151,7 @@ function scrollToGame(gameId) {
     }
 }
 
-// Inicjalizacja galerii - DLA WSZYSTKICH SEKCJI
+/// Inicjalizacja galerii - DLA WSZYSTKICH SEKCJI
 document.addEventListener('DOMContentLoaded', function() {
     // Dla każdej galerii na stronie
     document.querySelectorAll('.images-column').forEach(imagesColumn => {
@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
 
 
