@@ -2,41 +2,63 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+        const targetSection = document.querySelector(this.getAttribute('href'));
+        targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
         });
     });
 });
 
-// Scroll snapping - automatyczne przejście do następnej sekcji
+// Ulepszony scroll snapping
 let isScrolling = false;
 let currentSection = 0;
 const sections = document.querySelectorAll('section');
+const scrollThreshold = 50; // Minimalny scroll aby zmienić sekcję
 
-// Ustawienia scroll snapping
-document.addEventListener('wheel', (e) => {
+// Funkcja do zmiany sekcji
+function goToSection(index) {
+    if (index >= 0 && index < sections.length) {
+        currentSection = index;
+        sections[currentSection].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Obsługa scrolla
+window.addEventListener('wheel', (e) => {
     if (isScrolling) return;
     
     isScrolling = true;
     
-    if (e.deltaY > 0 && currentSection < sections.length - 1) {
-        // Scroll w dół
-        currentSection++;
-    } else if (e.deltaY < 0 && currentSection > 0) {
-        // Scroll w górę
-        currentSection--;
+    // Sprawdzamy kierunek scrolla i czy przekroczono próg
+    if (e.deltaY > scrollThreshold && currentSection < sections.length - 1) {
+        // Scroll w dół - następna sekcja
+        goToSection(currentSection + 1);
+    } else if (e.deltaY < -scrollThreshold && currentSection > 0) {
+        // Scroll w górę - poprzednia sekcja
+        goToSection(currentSection - 1);
     }
-    
-    // Przewijanie do sekcji
-    sections[currentSection].scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
     
     // Reset flagi po zakończeniu animacji
     setTimeout(() => {
         isScrolling = false;
-    }, 1000);
+    }, 800);
+});
+
+// Obsługa klawiszy strzałek
+window.addEventListener('keydown', (e) => {
+    if (isScrolling) return;
+    
+    if (e.key === 'ArrowDown' && currentSection < sections.length - 1) {
+        e.preventDefault();
+        goToSection(currentSection + 1);
+    } else if (e.key === 'ArrowUp' && currentSection > 0) {
+        e.preventDefault();
+        goToSection(currentSection - 1);
+    }
 });
 
 // Obsługa kliknięcia w nawigację
@@ -45,9 +67,25 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         const targetId = e.target.getAttribute('href').substring(1);
         sections.forEach((section, index) => {
             if (section.id === targetId) {
-                currentSection = index;
+                goToSection(index);
             }
         });
+    });
+});
+
+// Aktualizacja currentSection podczas manualnego scrolla
+window.addEventListener('scroll', () => {
+    if (isScrolling) return;
+    
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    
+    sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = index;
+        }
     });
 });
 
@@ -67,14 +105,14 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Obserwowanie elementów do animacji
-document.querySelectorAll('.game-card, .game-detail-container, .skill-item').forEach(el => {
+document.querySelectorAll('.game-card, .game-detail-container, .skill-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
 });
 
-// Inicjalne ustawienie pierwszej sekcji jako aktywnej
+// Inicjalne ustawienie
 window.addEventListener('load', () => {
     currentSection = 0;
 });
