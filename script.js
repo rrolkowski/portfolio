@@ -156,6 +156,42 @@ document.querySelectorAll('.game-card').forEach(card => {
     card.style.cursor = 'pointer';
 });
 
+// Efekt Matrix
+function createMatrixEffect() {
+    const matrixBg = document.getElementById('matrix-bg');
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    
+    function createChar() {
+        const char = document.createElement('div');
+        char.className = 'matrix-char';
+        char.textContent = chars[Math.floor(Math.random() * chars.length)];
+        char.style.left = Math.random() * 100 + 'vw';
+        char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        char.style.opacity = Math.random() * 0.5 + 0.3;
+        
+        matrixBg.appendChild(char);
+        
+        // Usuń znak po animacji
+        setTimeout(() => {
+            if (char.parentNode) {
+                char.parentNode.removeChild(char);
+            }
+        }, 5000);
+    }
+    
+    // Twórz nowe znaki co 100ms
+    setInterval(createChar, 100);
+    
+    // Początkowe znaki
+    for (let i = 0; i < 50; i++) {
+        setTimeout(createChar, i * 100);
+    }
+}
+
+// Uruchom efekt Matrix po załadowaniu strony
+window.addEventListener('load', createMatrixEffect);
+
+
 
 
 
