@@ -15,11 +15,6 @@ let isScrolling = false;
 let currentSection = 0;
 const sections = document.querySelectorAll('section');
 
-// Wyłącz normalny scroll
-document.addEventListener('wheel', (e) => {
-    e.preventDefault();
-}, { passive: false });
-
 // Obsługa scrolla - TYLKO zmiana sekcji
 window.addEventListener('wheel', (e) => {
     if (isScrolling) return;
@@ -155,6 +150,7 @@ function scrollToGame(gameId) {
 document.querySelectorAll('.game-card').forEach(card => {
     card.style.cursor = 'pointer';
 });
+
 
 
 
