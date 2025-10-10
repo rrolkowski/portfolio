@@ -156,49 +156,51 @@ document.querySelectorAll('.game-card').forEach(card => {
     card.style.cursor = 'pointer';
 });
 
-// Efekt Matrix
+// Efekt Matrix - POPRAWIONA WERSJA
 function createMatrixEffect() {
-    console.log(' Matrix effect started!');
+    console.log(' Matrix effect starting...');
     
     const matrixBg = document.getElementById('matrix-bg');
+    
+    // Czekaj aż element będzie dostępny
+    if (!matrixBg) {
+        console.log('⏳ Matrix bg not found, retrying...');
+        setTimeout(createMatrixEffect, 100);
+        return;
+    }
+    
+    console.log('Matrix bg found!');
+    
     const chars = '01010101010101010101ABCDEFGHIJKLMNOPQRSTUVWXYZ$$$%%%&&&***###+++@@@';
     
     function createChar() {
         const char = document.createElement('div');
         char.className = 'matrix-char';
         char.textContent = chars[Math.floor(Math.random() * chars.length)];
-        
-        // Losowa pozycja
         char.style.left = Math.random() * 100 + 'vw';
-        
-        // Losowa prędkość
-        const duration = Math.random() * 2 + 1;
-        char.style.animationDuration = duration + 's';
-        
-        // Losowy rozmiar
+        char.style.animationDuration = (Math.random() * 2 + 1) + 's';
         char.style.fontSize = (Math.random() * 10 + 16) + 'px';
         
         matrixBg.appendChild(char);
         
-        // Usuń po animacji
         setTimeout(() => {
             if (char.parentNode) {
                 char.remove();
             }
-        }, duration * 1000 + 100);
+        }, 3000);
     }
     
-    // Twórz znaki co 50ms - gęstszy efekt
     setInterval(createChar, 50);
     
-    // Początkowe znaki
     for (let i = 0; i < 30; i++) {
         setTimeout(createChar, i * 80);
     }
 }
 
-// Uruchom od razu
-createMatrixEffect();
+// Uruchom po załadowaniu DOM
+document.addEventListener('DOMContentLoaded', createMatrixEffect);
+// ALBO: window.addEventListener('load', createMatrixEffect);
+
 
 
 
