@@ -10,6 +10,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Wyłącz normalny scroll
+document.addEventListener('wheel', (e) => {
+    e.preventDefault();
+}, { passive: false });
+
 // Scroll snapping - TYLKO między sekcjami
 let isScrolling = false;
 let currentSection = 0;
@@ -150,6 +155,7 @@ function scrollToGame(gameId) {
 document.querySelectorAll('.game-card').forEach(card => {
     card.style.cursor = 'pointer';
 });
+
 
 
 
