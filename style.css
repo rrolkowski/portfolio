@@ -635,7 +635,7 @@ footer {
 .video-container {
     position: relative;
     width: 100%;
-    height: 650px;
+    height: 450px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
@@ -658,6 +658,7 @@ footer {
         height: 300px; /* Jeszcze mniejsze na małych ekranach */
     }
 }
+
 
 
 
