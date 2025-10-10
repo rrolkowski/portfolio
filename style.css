@@ -307,6 +307,45 @@ footer {
     color: #9b59b6;
 }
 
+/* Technical Skills */
+.skills-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0 3rem;
+}
+
+.skill-item {
+    background: rgba(52, 152, 219, 0.1);
+    border: 2px solid #3498db;
+    border-radius: 15px;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.skill-item:hover {
+    background: rgba(52, 152, 219, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+    border-color: #9b59b6;
+}
+
+.skill-item i {
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+.skill-item span {
+    color: #e0e0ff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
 /* Responsywność */
 @media (max-width: 768px) {
     h1 {
@@ -325,3 +364,4 @@ footer {
         flex-direction: column;
     }
 }
+
