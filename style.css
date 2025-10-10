@@ -307,43 +307,97 @@ footer {
     color: #9b59b6;
 }
 
-/* Technical Skills */
-.skills-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 2rem 0 3rem;
+/* Technical Skills Section */
+.skills-section {
+    margin: 3rem 0;
+    text-align: center;
 }
 
-.skill-item {
-    background: rgba(52, 152, 219, 0.1);
+.skills-title {
+    font-size: 1.8rem;
+    color: #3498db;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.skills-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #9b59b6;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: rgba(30, 30, 60, 0.8);
     border: 2px solid #3498db;
     border-radius: 15px;
-    padding: 0.8rem 1.5rem;
+    padding: 1.5rem 1rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    min-height: 120px;
+    justify-content: center;
 }
 
-.skill-item:hover {
-    background: rgba(52, 152, 219, 0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+.skill-card:hover {
+    background: rgba(52, 152, 219, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
     border-color: #9b59b6;
 }
 
-.skill-item i {
+.skill-card i {
     color: #3498db;
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
-.skill-item span {
+.skill-card span {
     color: #e0e0ff;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Responsywność skills */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .skill-card {
+        padding: 1rem 0.5rem;
+        min-height: 100px;
+    }
+    
+    .skill-card i {
+        font-size: 1.5rem;
+    }
+    
+    .skill-card span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Responsywność */
@@ -364,4 +418,5 @@ footer {
         flex-direction: column;
     }
 }
+
 
