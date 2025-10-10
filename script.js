@@ -15,9 +15,12 @@ let isScrolling = false;
 let currentSection = 0;
 const sections = document.querySelectorAll('section');
 
-// Wyłącz normalny scroll
+// Wyłącz normalny scroll TYLKO dla sekcji pełnoekranowych
 document.addEventListener('wheel', (e) => {
-    e.preventDefault();
+    const currentSection = sections[currentSection];
+    if (currentSection.id !== 'footer') {
+        e.preventDefault();
+    }
 }, { passive: false });
 
 // Obsługa scrolla - TYLKO zmiana sekcji
@@ -155,5 +158,6 @@ function scrollToGame(gameId) {
 document.querySelectorAll('.game-card').forEach(card => {
     card.style.cursor = 'pointer';
 });
+
 
 
