@@ -106,3 +106,35 @@ document.querySelectorAll('.game-card, .game-detail-container, .skill-card').for
 window.addEventListener('load', () => {
     currentSection = 0;
 });
+
+// Funkcja do pokazywania szczegółów gry
+function showGameDetail(gameId) {
+    // Ukryj wszystkie sekcje gier
+    document.querySelectorAll('.game-detail-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Pokaż wybraną sekcję
+    const targetSection = document.getElementById(gameId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+        targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        // Aktualizuj currentSection dla scroll snapping
+        const sections = document.querySelectorAll('section');
+        sections.forEach((section, index) => {
+            if (section.id === gameId) {
+                currentSection = index;
+            }
+        });
+    }
+}
+
+// Obsługa kliknięcia w kartę gry
+document.querySelectorAll('.game-card').forEach(card => {
+    card.style.cursor = 'pointer';
+});
+
