@@ -151,24 +151,23 @@ function scrollToGame(gameId) {
     }
 }
 
-// Zamiana obrazków po kliknięciu
+// Podgląd obrazków - bez zamiany miejscami
 document.querySelectorAll('.small-img').forEach(smallImg => {
     smallImg.addEventListener('click', function() {
-        const smallImgElement = this.querySelector('img');
+        const smallImgSrc = this.querySelector('img').src;
         const mainImage = this.closest('.images-column').querySelector('.main-image img');
         
-        if (mainImage && smallImgElement.src) {
-            // Zamiana obrazków
-            const tempSrc = mainImage.src;
-            mainImage.src = smallImgElement.src;
-            smallImgElement.src = tempSrc;
+        if (mainImage && smallImgSrc) {
+            // Tylko zmiana głównego obrazka - bez zamiany
+            mainImage.src = smallImgSrc;
             
-            // Dodanie klasy aktywnej
+            // Podświetlenie aktywnego obrazka
             document.querySelectorAll('.small-img').forEach(img => img.classList.remove('active'));
             this.classList.add('active');
         }
     });
 });
+
 
 
 
