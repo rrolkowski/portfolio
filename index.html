@@ -9,233 +9,232 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 </head>
 <body>
-html
-<!-- Sekcja główna -->
-<section id="home">
-    <div class="container">
-        <div class="hero-content">
-            <h1>Rółkowski Rafał</h1>
-            <h2>GAMEPLAY PROGRAMMER</h2>
-            <p class="description">Specjalizuję się jako Gameplay Programmer z pasją do AI w grach. Pracuję głównie w Unity, pisząc kod w C#.</p>
-            <p class="description">Moje doświadczenie obejmuje projektowanie mechanik gracza, przeciwników AI oraz systemów nawigacji.</p>
-            <!-- Technical Skills -->
-            <div class="skills-section">
-                <h3 class="skills-title">Technical Skills</h3>
-                <div class="skills-row">
-                    <div class="skill-card">
-                        <i class="fab fa-unity"></i>
-                        <span>UNITY</span>
+    <!-- Sekcja główna -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Kowalski</h1>
+                <h2>Unity Game Developer</h2>
+                <p class="description">Tworzę immersyjne doświadczenia gamingowe łączące innowacyjną mechanikę z dopracowaną grafiką. Specjalizuję się w rozwoju gier 3D przy użyciu Unity i C#.</p>
+                
+                <!-- Technical Skills -->
+                <div class="skills-section">
+                    <h3 class="skills-title">Technical Skills</h3>
+                    <div class="skills-row">
+                        <div class="skill-card">
+                            <i class="fab fa-unity"></i>
+                            <span>UNITY</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="devicon-csharp-plain"></i>
+                            <span>C#</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-tools"></i>
+                            <span>UNREAL ENGINE</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="devicon-cplusplus-plain"></i>
+                            <span>C++</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fab fa-git-alt"></i>
+                            <span>GIT</span>
+                        </div>
                     </div>
-                    <div class="skill-card">
-                        <i class="devicon-csharp-plain"></i>
-                        <span>C#</span>
+                </div>
+                
+                <a href="#portfolio" class="btn">Zobacz moje projekty</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Sekcja portfolio -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Moje Projekty</h2>
+            <div class="games-grid">
+                <!-- Cyber Realm -->
+                <div class="game-card" onclick="showGameDetail('cyber-realm')">
+                    <div class="game-image">
+                        <img src="images/cyber-realm.jpg" alt="Cyber Realm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder">
+                            <i class="fas fa-dragon"></i>
+                        </div>
                     </div>
-                    <div class="skill-card">
-                        <i class="fab fa-uncharted"></i>
-                        <span>BASIC UNREAL ENGINE</span>
+                    <div class="game-content">
+                        <h3 class="game-title">Cyber Realm</h3>
+                        <p class="game-description">Gra RPG w cyberpunkowym świecie z rozbudowanym systemem walki i fabułą.</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">3D</span>
+                        </div>
                     </div>
-                    <div class="skill-card">
-                        <i class="devicon-cplusplus-plain"></i>
-                        <span>BASIC C++</span>
+                </div>
+                
+                <!-- Neon Racer -->
+                <div class="game-card" onclick="showGameDetail('neon-racer')">
+                    <div class="game-image">
+                        <img src="images/neon-racer.jpg" alt="Neon Racer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder">
+                            <i class="fas fa-robot"></i>
+                        </div>
                     </div>
-                    <div class="skill-card">
-                        <i class="fab fa-git-alt"></i>
-                        <span>GIT</span>
+                    <div class="game-content">
+                        <h3 class="game-title">Neon Racer</h3>
+                        <p class="game-description">Wyścigi w futurystycznym świecie z trybem multiplayer i customizacją pojazdów.</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Multiplayer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Space Defenders -->
+                <div class="game-card" onclick="showGameDetail('space-defenders')">
+                    <div class="game-image">
+                        <img src="images/space-defenders.jpg" alt="Space Defenders" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Space Defenders</h3>
+                        <p class="game-description">Tower defense w kosmosie z unikalnymi mechanikami obrony i upgrade'ami.</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">2D</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <a href="#portfolio" class="btn">Zobacz moje projekty</a>
         </div>
-    </div>
-    <div class="scroll-indicator">
-        <i class="fas fa-chevron-down"></i>
-    </div>
-</section>
-    
-    <!-- Sekcja portfolio -->
-<section id="portfolio">
-    <div class="container">
-        <h2 class="section-title">Moje Projekty</h2>
-        <div class="games-grid">
-            <!-- Laser Defender -->
-            <div class="game-card" onclick="showGameDetail('laser-defender')">
-                <div class="game-image">
-                    <img src="images/laser-defender.jpg" alt="Laser Defender" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder">
+    </section>
+
+    <!-- Sekcja Cyber Realm -->
+    <section id="cyber-realm" class="game-detail-section">
+        <div class="container">
+            <div class="game-detail-container">
+                <div class="game-detail-image">
+                    <img src="images/cyber-realm-large.jpg" alt="Cyber Realm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder-large">
                         <i class="fas fa-dragon"></i>
                     </div>
                 </div>
-                <div class="game-content">
-                    <h3 class="game-title">Laser Defender</h3>
-                    <p class="game-description">Klasyczny space shooter 2D.</p>
+                <div class="game-detail-content">
+                    <h2 class="game-detail-title">Cyber Realm</h2>
+                    <p class="game-detail-description">Cyber Realm to zaawansowana gra RPG osadzona w dystopijnej przyszłości, gdzie gracze odkrywają rozległe cyberpunkowe miasto, walczą z korporacyjnymi siłami i decydują o losie społeczeństwa.</p>
+                    
+                    <div class="game-features">
+                        <h3>Kluczowe funkcje:</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Rozbudowany system dialogów z wyborami moralnymi</li>
+                            <li><i class="fas fa-check"></i> Zaawansowana mechanika walki real-time</li>
+                            <li><i class="fas fa-check"></i> System ulepszeń cybernetycznych</li>
+                            <li><i class="fas fa-check"></i> Otwarty świat z dynamicznymi wydarzeniami</li>
+                        </ul>
+                    </div>
+                    
                     <div class="game-tech">
-                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">Unity Engine</span>
                         <span class="tech-tag">C#</span>
-                        <span class="tech-tag">2D</span>
+                        <span class="tech-tag">HDRP</span>
+                    </div>
+                    
+                    <div class="game-links">
+                        <a href="#" class="btn">Zobacz Demo</a>
+                        <a href="#" class="btn btn-outline">GitHub</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Neon Racer -->
-            <div class="game-card" onclick="showGameDetail('neon-racer')">
-                <div class="game-image">
-                    <img src="images/neon-racer.jpg" alt="Neon Racer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder">
+        </div>
+    </section>
+
+    <!-- Sekcja Neon Racer -->
+    <section id="neon-racer" class="game-detail-section">
+        <div class="container">
+            <div class="game-detail-container">
+                <div class="game-detail-image">
+                    <img src="images/neon-racer-large.jpg" alt="Neon Racer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder-large">
                         <i class="fas fa-robot"></i>
                     </div>
                 </div>
-                <div class="game-content">
-                    <h3 class="game-title">Neon Racer</h3>
-                    <p class="game-description">Wyścigi w futurystycznym świecie z trybem multiplayer i customizacją pojazdów.</p>
+                <div class="game-detail-content">
+                    <h2 class="game-detail-title">Neon Racer</h2>
+                    <p class="game-detail-description">Neon Racer to intensywna gra wyścigowa w futurystycznym świecie, oferująca tryb multiplayer i rozbudowany system customizacji pojazdów.</p>
+                    
+                    <div class="game-features">
+                        <h3>Kluczowe funkcje:</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Tryb multiplayer do 8 graczy</li>
+                            <li><i class="fas fa-check"></i> Głęboka customizacja pojazdów</li>
+                            <li><i class="fas fa-check"></i> Dynamiczne trasy z zmieniającą się pogodą</li>
+                            <li><i class="fas fa-check"></i> System rankingowy i osiągnięć</li>
+                        </ul>
+                    </div>
+                    
                     <div class="game-tech">
                         <span class="tech-tag">Unity</span>
                         <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Photon</span>
                         <span class="tech-tag">Multiplayer</span>
+                    </div>
+                    
+                    <div class="game-links">
+                        <a href="#" class="btn">Zobacz Demo</a>
+                        <a href="#" class="btn btn-outline">GitHub</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Space Defenders -->
-            <div class="game-card" onclick="showGameDetail('space-defenders')">
-                <div class="game-image">
-                    <img src="images/space-defenders.jpg" alt="Space Defenders" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder">
+        </div>
+    </section>
+
+    <!-- Sekcja Space Defenders -->
+    <section id="space-defenders" class="game-detail-section">
+        <div class="container">
+            <div class="game-detail-container">
+                <div class="game-detail-image">
+                    <img src="images/space-defenders-large.jpg" alt="Space Defenders" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder-large">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                 </div>
-                <div class="game-content">
-                    <h3 class="game-title">Space Defenders</h3>
-                    <p class="game-description">Tower defense w kosmosie z unikalnymi mechanikami obrony i upgrade'ami.</p>
+                <div class="game-detail-content">
+                    <h2 class="game-detail-title">Space Defenders</h2>
+                    <p class="game-detail-description">Space Defenders to strategiczna gra tower defense rozgrywająca się w głębi kosmosu, z unikalnymi mechanikami obrony i systemem upgrade'ów.</p>
+                    
+                    <div class="game-features">
+                        <h3>Kluczowe funkcje:</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> 50+ poziomów w różnych galaktykach</li>
+                            <li><i class="fas fa-check"></i> 15 różnych typów wież obronnych</li>
+                            <li><i class="fas fa-check"></i> System researchu i upgrade'ów</li>
+                            <li><i class="fas fa-check"></i> Boss fight co 10 poziomów</li>
+                        </ul>
+                    </div>
+                    
                     <div class="game-tech">
                         <span class="tech-tag">Unity</span>
                         <span class="tech-tag">C#</span>
                         <span class="tech-tag">2D</span>
+                        <span class="tech-tag">UI System</span>
+                    </div>
+                    
+                    <div class="game-links">
+                        <a href="#" class="btn">Zobacz Demo</a>
+                        <a href="#" class="btn btn-outline">GitHub</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-    <!-- Sekcja Laser Defenders -->
-<section id="laser-defender" class="game-detail-section">
-    <div class="container">
-        <div class="game-detail-container">
-            <div class="game-detail-image">
-                <img src="images/laser-defender-large.jpg" alt="Laser Defender" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="image-placeholder-large">
-                    <i class="fas fa-dragon"></i>
-                </div>
-            </div>
-            <div class="game-detail-content">
-                <h2 class="game-detail-title">Laser Defender</h2>
-                <p class="game-detail-description">Laser Defender to klasyczny space shooter 2D, w którym sterujesz statkiem kosmicznym i eliminujesz fale wrogów.</p>
-                
-                <div class="game-features">
-                    <h3>Kluczowe funkcje:</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Rozbudowany system dialogów z wyborami moralnymi</li>
-                        <li><i class="fas fa-check"></i> Zaawansowana mechanika walki real-time</li>
-                        <li><i class="fas fa-check"></i> System ulepszeń cybernetycznych</li>
-                        <li><i class="fas fa-check"></i> Otwarty świat z dynamicznymi wydarzeniami</li>
-                    </ul>
-                </div>
-                
-                <div class="game-tech">
-                    <span class="tech-tag">Unity Engine</span>
-                    <span class="tech-tag">C#</span>
-                    <span class="tech-tag">HDRP</span>
-                </div>
-                
-                <div class="game-links">
-                    <a href="#" class="btn">Zobacz Demo</a>
-                    <a href="#" class="btn btn-outline">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Sekcja Neon Racer -->
-<section id="neon-racer" class="game-detail-section">
-    <div class="container">
-        <div class="game-detail-container">
-            <div class="game-detail-image">
-                <img src="images/neon-racer-large.jpg" alt="Neon Racer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="image-placeholder-large">
-                    <i class="fas fa-robot"></i>
-                </div>
-            </div>
-            <div class="game-detail-content">
-                <h2 class="game-detail-title">Neon Racer</h2>
-                <p class="game-detail-description">Neon Racer to intensywna gra wyścigowa w futurystycznym świecie, oferująca tryb multiplayer i rozbudowany system customizacji pojazdów.</p>
-                
-                <div class="game-features">
-                    <h3>Kluczowe funkcje:</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> Tryb multiplayer do 8 graczy</li>
-                        <li><i class="fas fa-check"></i> Głęboka customizacja pojazdów</li>
-                        <li><i class="fas fa-check"></i> Dynamiczne trasy z zmieniającą się pogodą</li>
-                        <li><i class="fas fa-check"></i> System rankingowy i osiągnięć</li>
-                    </ul>
-                </div>
-                
-                <div class="game-tech">
-                    <span class="tech-tag">Unity</span>
-                    <span class="tech-tag">C#</span>
-                    <span class="tech-tag">Photon</span>
-                    <span class="tech-tag">Multiplayer</span>
-                </div>
-                
-                <div class="game-links">
-                    <a href="#" class="btn">Zobacz Demo</a>
-                    <a href="#" class="btn btn-outline">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Sekcja Space Defenders -->
-<section id="space-defenders" class="game-detail-section">
-    <div class="container">
-        <div class="game-detail-container">
-            <div class="game-detail-image">
-                <img src="images/space-defenders-large.jpg" alt="Space Defenders" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="image-placeholder-large">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-            </div>
-            <div class="game-detail-content">
-                <h2 class="game-detail-title">Space Defenders</h2>
-                <p class="game-detail-description">Space Defenders to strategiczna gra tower defense rozgrywająca się w głębi kosmosu, z unikalnymi mechanikami obrony i systemem upgrade'ów.</p>
-                
-                <div class="game-features">
-                    <h3>Kluczowe funkcje:</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> 50+ poziomów w różnych galaktykach</li>
-                        <li><i class="fas fa-check"></i> 15 różnych typów wież obronnych</li>
-                        <li><i class="fas fa-check"></i> System researchu i upgrade'ów</li>
-                        <li><i class="fas fa-check"></i> Boss fight co 10 poziomów</li>
-                    </ul>
-                </div>
-                
-                <div class="game-tech">
-                    <span class="tech-tag">Unity</span>
-                    <span class="tech-tag">C#</span>
-                    <span class="tech-tag">2D</span>
-                    <span class="tech-tag">UI System</span>
-                </div>
-                
-                <div class="game-links">
-                    <a href="#" class="btn">Zobacz Demo</a>
-                    <a href="#" class="btn btn-outline">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Stopka -->
     <footer>
@@ -246,22 +245,10 @@ html
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <p>&copy; 2023 Alex Kowalski. Wszystkie prawa zastrzeżone.</p>
+            <p>&copy; 2023 Kowalski. Wszystkie prawa zastrzeżone.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
