@@ -319,14 +319,9 @@ h2 {
 /* Stopka */
 #footer {
     background: #050510;
-    padding: 3rem 2rem;
+    padding: 2rem;
     text-align: center;
     color: #95a5a6;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .social-links {
@@ -459,6 +454,7 @@ h2 {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
