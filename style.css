@@ -67,7 +67,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     margin-bottom: 1.5rem;
     color: #3498db;
 }
@@ -423,6 +423,7 @@ footer {
         flex-direction: column;
     }
 }
+
 
 
 
