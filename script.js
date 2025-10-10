@@ -1,3 +1,14 @@
+// Reset scrolla na górę przy załadowaniu strony
+window.addEventListener('load', () => {
+    currentSection = 0;
+    window.scrollTo(0, 0);
+});
+
+// Reset scrolla na górę przy odświeżaniu
+window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+});
+
 // Płynne przewijanie do sekcji
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -155,6 +166,7 @@ function scrollToGame(gameId) {
 document.querySelectorAll('.game-card').forEach(card => {
     card.style.cursor = 'pointer';
 });
+
 
 
 
