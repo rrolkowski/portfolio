@@ -1,42 +1,134 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Portfolio Rafał Rolkowski</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header class="hero">
-    <h1>Cześć, jestem Rafał 👋</h1>
-    <p>Programista Unity i twórca gier</p>
-    <a href="#projects" class="btn">Zobacz projekty</a>
-  </header>
-
-  <main>
-    <section id="projects" class="container">
-      <h2>Projekty</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Space Shooter 2D</h3>
-          <p>Gra stworzona w Unity z systemem fal i power-upami.</p>
-        </article>
-        <article class="card">
-          <h3>Dungeon Crawler</h3>
-          <p>Baśniowy świat z systemem umiejętności i fabułą.</p>
-        </article>
-      </div>
+    <!-- Sekcja główna -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Alex</h1>
+                <h2>Kowalski</h2>
+                <p class="subtitle">Unity Game Developer</p>
+                <p class="description">Tworzę immersyjne doświadczenia gamingowe łączące innowacyjną mechanikę z dopracowaną grafiką. Specjalizuję się w rozwoju gier 3D przy użyciu Unity i C#.</p>
+                <a href="#portfolio" class="btn">Zobacz moje projekty</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
 
-    <section id="contact" class="container">
-      <h2>Kontakt</h2>
-      <p>Email: <a href="mailto:twojemail@gmail.com">twojemail@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/twojnick" target="_blank">github.com/twojnick</a></p>
+    <!-- Sekcja portfolio -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Moje Projekty</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Cyber Realm</h3>
+                        <p class="game-description">Gra RPG w cyberpunkowym świecie z rozbudowanym systemem walki i fabułą.</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">3D</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Neon Racer</h3>
+                        <p class="game-description">Wyścigi w futurystycznym świecie z trybem multiplayer i customizacją pojazdów.</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Multiplayer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Space Defenders</h3>
+                        <p class="game-description">Tower defense w kosmosie z unikalnymi mechanikami obrony i upgrade'ami.</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">2D</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <p>© 2025 Rafał Rolkowski — Wszystkie prawa zastrzeżone</p>
-  </footer>
+    <!-- Sekcja szczegółów gry -->
+    <section id="game-detail">
+        <div class="container">
+            <div class="game-detail-container">
+                <div class="game-detail-image">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <div class="game-detail-content">
+                    <h2 class="game-detail-title">Cyber Realm</h2>
+                    <p class="game-detail-description">Cyber Realm to zaawansowana gra RPG osadzona w dystopijnej przyszłości, gdzie gracze odkrywają rozległe cyberpunkowe miasto, walczą z korporacyjnymi siłami i decydują o losie społeczeństwa.</p>
+                    
+                    <div class="game-features">
+                        <h3 style="color: #9b59b6; margin-bottom: 1rem;">Kluczowe funkcje:</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Rozbudowany system dialogów z wyborami moralnymi</li>
+                            <li><i class="fas fa-check"></i> Zaawansowana mechanika walki real-time</li>
+                            <li><i class="fas fa-check"></i> System ulepszeń cybernetycznych</li>
+                            <li><i class="fas fa-check"></i> Otwarty świat z dynamicznymi wydarzeniami</li>
+                            <li><i class="fas fa-check"></i> System crafting-u i modyfikacji broni</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="game-tech" style="margin-bottom: 2rem;">
+                        <span class="tech-tag">Unity Engine</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">HDRP</span>
+                        <span class="tech-tag">ProBuilder</span>
+                        <span class="tech-tag">Odin Inspector</span>
+                    </div>
+                    
+                    <div class="game-links">
+                        <a href="#" class="btn">Zobacz Demo</a>
+                        <a href="#" class="btn btn-outline">Kod źródłowy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stopka -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2023 Alex Kowalski. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
