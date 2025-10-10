@@ -10,42 +10,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Ulepszony scroll snapping
+// Scroll snapping - TYLKO między sekcjami
 let isScrolling = false;
 let currentSection = 0;
 const sections = document.querySelectorAll('section');
-const scrollThreshold = 50; // Minimalny scroll aby zmienić sekcję
 
-// Funkcja do zmiany sekcji
-function goToSection(index) {
-    if (index >= 0 && index < sections.length) {
-        currentSection = index;
-        sections[currentSection].scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
+// Wyłącz normalny scroll
+document.addEventListener('wheel', (e) => {
+    e.preventDefault();
+}, { passive: false });
 
-// Obsługa scrolla
+// Obsługa scrolla - TYLKO zmiana sekcji
 window.addEventListener('wheel', (e) => {
     if (isScrolling) return;
     
     isScrolling = true;
     
-    // Sprawdzamy kierunek scrolla i czy przekroczono próg
-    if (e.deltaY > scrollThreshold && currentSection < sections.length - 1) {
+    if (e.deltaY > 0 && currentSection < sections.length - 1) {
         // Scroll w dół - następna sekcja
-        goToSection(currentSection + 1);
-    } else if (e.deltaY < -scrollThreshold && currentSection > 0) {
+        currentSection++;
+    } else if (e.deltaY < 0 && currentSection > 0) {
         // Scroll w górę - poprzednia sekcja
-        goToSection(currentSection - 1);
+        currentSection--;
     }
+    
+    // Przewijanie do sekcji
+    sections[currentSection].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
     
     // Reset flagi po zakończeniu animacji
     setTimeout(() => {
         isScrolling = false;
-    }, 800);
+    }, 1000);
 });
 
 // Obsługa klawiszy strzałek
@@ -54,10 +52,18 @@ window.addEventListener('keydown', (e) => {
     
     if (e.key === 'ArrowDown' && currentSection < sections.length - 1) {
         e.preventDefault();
-        goToSection(currentSection + 1);
+        currentSection++;
+        sections[currentSection].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
     } else if (e.key === 'ArrowUp' && currentSection > 0) {
         e.preventDefault();
-        goToSection(currentSection - 1);
+        currentSection--;
+        sections[currentSection].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
     }
 });
 
@@ -67,25 +73,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         const targetId = e.target.getAttribute('href').substring(1);
         sections.forEach((section, index) => {
             if (section.id === targetId) {
-                goToSection(index);
+                currentSection = index;
             }
         });
-    });
-});
-
-// Aktualizacja currentSection podczas manualnego scrolla
-window.addEventListener('scroll', () => {
-    if (isScrolling) return;
-    
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
-    
-    sections.forEach((section, index) => {
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            currentSection = index;
-        }
     });
 });
 
