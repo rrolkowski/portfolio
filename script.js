@@ -15,12 +15,9 @@ let isScrolling = false;
 let currentSection = 0;
 const sections = document.querySelectorAll('section');
 
-// Wyłącz normalny scroll TYLKO dla sekcji pełnoekranowych
+// Wyłącz normalny scroll
 document.addEventListener('wheel', (e) => {
-    const currentSection = sections[currentSection];
-    if (currentSection.id !== 'footer') {
-        e.preventDefault();
-    }
+    e.preventDefault();
 }, { passive: false });
 
 // Obsługa scrolla - TYLKO zmiana sekcji
