@@ -151,25 +151,25 @@ function scrollToGame(gameId) {
     }
 }
 
-// Obsługa kliknięcia w kartę gry
-document.querySelectorAll('.game-card').forEach(card => {
-    card.style.cursor = 'pointer';
-});
-
-// Obsługa kliknięcia w małe obrazki
-document.querySelectorAll('.small-image').forEach(smallImg => {
+// Zamiana obrazków po kliknięciu
+document.querySelectorAll('.small-img').forEach(smallImg => {
     smallImg.addEventListener('click', function() {
-        const smallImgSrc = this.querySelector('img').src;
-        const mainImage = this.closest('.game-detail-layout').querySelector('.game-detail-image img');
+        const smallImgElement = this.querySelector('img');
+        const mainImage = this.closest('.images-column').querySelector('.main-image img');
         
-        if (mainImage && smallImgSrc) {
+        if (mainImage && smallImgElement.src) {
             // Zamiana obrazków
             const tempSrc = mainImage.src;
-            mainImage.src = smallImgSrc;
-            this.querySelector('img').src = tempSrc;
+            mainImage.src = smallImgElement.src;
+            smallImgElement.src = tempSrc;
+            
+            // Dodanie klasy aktywnej
+            document.querySelectorAll('.small-img').forEach(img => img.classList.remove('active'));
+            this.classList.add('active');
         }
     });
 });
+
 
 
 
