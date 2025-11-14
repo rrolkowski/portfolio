@@ -718,6 +718,43 @@ footer {
     }
 }
 
+/* Style dla rozszerzonej galerii (8 obrazków) */
+.extended-gallery {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.8rem;
+}
+
+.extended-gallery .small-img {
+    height: 90px;
+}
+
+/* Responsywność dla rozszerzonej galerii */
+@media (max-width: 1024px) {
+    .extended-gallery {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .extended-gallery {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    
+    .extended-gallery .small-img {
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .extended-gallery {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem;
+    }
+    
+    .extended-gallery .small-img {
+        height: 70px;
+    }
+}
 
 
 
