@@ -10,7 +10,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Obsługa stałego przycisku powrotu do portfolio
+// Stały przycisk powrotu do portfolio
 const backToPortfolioBtn = document.getElementById('back-to-portfolio');
 
 function updateBackToPortfolioButton() {
@@ -28,72 +28,6 @@ backToPortfolioBtn.addEventListener('click', () => {
         behavior: 'smooth',
         block: 'start'
     });
-});
-
-// Aktualizuj przycisk przy zmianie sekcji
-const originalWheelHandler = window.addEventListener('wheel', (e) => {
-    if (isScrolling) return;
-    
-    isScrolling = true;
-    
-    if (e.deltaY > 0 && currentSection < sections.length - 1) {
-        currentSection++;
-    } else if (e.deltaY < 0 && currentSection > 0) {
-        currentSection--;
-    }
-    
-    sections[currentSection].scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-    
-    // Aktualizuj przycisk
-    updateBackToPortfolioButton();
-    
-    setTimeout(() => {
-        isScrolling = false;
-    }, 1000);
-});
-
-// Aktualizuj przycisk również przy użyciu klawiszy
-window.addEventListener('keydown', (e) => {
-    if (isScrolling) return;
-    
-    if (e.key === 'ArrowDown' && currentSection < sections.length - 1) {
-        e.preventDefault();
-        currentSection++;
-        sections[currentSection].scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        updateBackToPortfolioButton();
-    } else if (e.key === 'ArrowUp' && currentSection > 0) {
-        e.preventDefault();
-        currentSection--;
-        sections[currentSection].scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        updateBackToPortfolioButton();
-    }
-});
-
-// Aktualizuj przycisk przy kliknięciu w nawigację
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-        const targetId = e.target.getAttribute('href').substring(1);
-        sections.forEach((section, index) => {
-            if (section.id === targetId) {
-                currentSection = index;
-                updateBackToPortfolioButton();
-            }
-        });
-    });
-});
-
-// Inicjalne ustawienie przycisku
-window.addEventListener('load', () => {
-    currentSection = 0;
     updateBackToPortfolioButton();
 });
 
@@ -126,6 +60,9 @@ window.addEventListener('wheel', (e) => {
         behavior: 'smooth',
         block: 'start'
     });
+
+     // Aktualizuj przycisk
+    updateBackToPortfolioButton();
     
     // Reset flagi po zakończeniu animacji
     setTimeout(() => {
@@ -144,6 +81,7 @@ window.addEventListener('keydown', (e) => {
             behavior: 'smooth',
             block: 'start'
         });
+        updateBackToPortfolioButton();
     } else if (e.key === 'ArrowUp' && currentSection > 0) {
         e.preventDefault();
         currentSection--;
@@ -151,6 +89,7 @@ window.addEventListener('keydown', (e) => {
             behavior: 'smooth',
             block: 'start'
         });
+        updateBackToPortfolioButton();
     }
 });
 
@@ -161,6 +100,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         sections.forEach((section, index) => {
             if (section.id === targetId) {
                 currentSection = index;
+                updateBackToPortfolioButton();
             }
         });
     });
@@ -192,6 +132,7 @@ document.querySelectorAll('.game-card, .game-detail-container, .skill-card').for
 // Inicjalne ustawienie
 window.addEventListener('load', () => {
     currentSection = 0;
+    updateBackToPortfolioButton();
 });
 
 // Funkcja do pokazywania szczegółów gry
@@ -282,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(fallThroneSection);
     }
 });
+
 
 
 
