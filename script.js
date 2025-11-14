@@ -15,26 +15,6 @@ document.addEventListener('wheel', (e) => {
     e.preventDefault();
 }, { passive: false });
 
-// Przycisk powrotu na górę
-const backToTopBtn = document.getElementById('backToTop');
-
-window.addEventListener('scroll', () => {
-    // pokaż przycisk po przewinięciu kawałka strony
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('show');
-    } else {
-        backToTopBtn.classList.remove('show');
-    }
-});
-
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-
 // Scroll snapping - TYLKO między sekcjami
 let isScrolling = false;
 let currentSection = 0;
@@ -192,49 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Autoplay wideo w sekcji "Fall Throne" tylko po wejściu w sekcję
-document.addEventListener('DOMContentLoaded', () => {
-    const fallThroneSection = document.getElementById('fall-throne');
-    if (!fallThroneSection) return;
 
-    const iframe = fallThroneSection.querySelector('iframe[data-autoplay-src]');
-    if (!iframe) return;
-
-    const autoplaySrc = iframe.dataset.autoplaySrc;
-
-    // Jeśli przeglądarka wspiera IntersectionObserver:
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Ładujemy wideo dopiero, gdy sekcja jest dobrze widoczna
-                    iframe.src = autoplaySrc;
-                    observer.unobserve(entry.target); // tylko raz
-                }
-            });
-        }, {
-            threshold: 0.5 // co najmniej ~50% sekcji w widoku
-        });
-
-        observer.observe(fallThroneSection);
-    } else {
-        // Fallback – jakby bardzo stara przeglądarka: odpal po pierwszym scrollu do sekcji
-        let loaded = false;
-        function checkAndLoad() {
-            if (loaded) return;
-            const rect = fallThroneSection.getBoundingClientRect();
-            const inView = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5;
-            if (inView) {
-                iframe.src = autoplaySrc;
-                loaded = true;
-                window.removeEventListener('scroll', checkAndLoad);
-            }
-        }
-
-        window.addEventListener('scroll', checkAndLoad);
-        checkAndLoad();
-    }
-});
 
 
 
