@@ -176,6 +176,7 @@ function scrollToGame(gameId) {
                 currentSection = index;
             }
         });
+        updateBackToPortfolioButton();
     }
 }
 
@@ -223,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(fallThroneSection);
     }
 });
+
 
 
 
