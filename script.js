@@ -172,6 +172,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Obsługa autoodtwarzania filmiku tylko gdy sekcja jest widoczna
+document.addEventListener('DOMContentLoaded', function() {
+    const fallThroneVideo = document.getElementById('fall-throne-video');
+    let videoStarted = false;
+
+    // Obserwator sprawdzający widoczność sekcji
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !videoStarted) {
+                // Sekcja jest widoczna - uruchom filmik
+                const videoUrl = fallThroneVideo.src + "&autoplay=1";
+                fallThroneVideo.src = videoUrl;
+                videoStarted = true;
+            }
+        });
+    }, { threshold: 0.5 }); // 50% sekcji musi być widoczne
+
+    // Obserwuj sekcję Fall Throne
+    const fallThroneSection = document.getElementById('fall-throne');
+    if (fallThroneSection && fallThroneVideo) {
+        observer.observe(fallThroneSection);
+    }
+});
 
 
 
