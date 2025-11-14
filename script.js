@@ -15,6 +15,26 @@ document.addEventListener('wheel', (e) => {
     e.preventDefault();
 }, { passive: false });
 
+// Przycisk powrotu na górę
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    // pokaż przycisk po przewinięciu kawałka strony
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+
 // Scroll snapping - TYLKO między sekcjami
 let isScrolling = false;
 let currentSection = 0;
@@ -171,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
 
 
