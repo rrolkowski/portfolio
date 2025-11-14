@@ -10,6 +10,93 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Obsługa stałego przycisku powrotu do portfolio
+const backToPortfolioBtn = document.getElementById('back-to-portfolio');
+
+function updateBackToPortfolioButton() {
+    if (currentSection > 1) { // Pokazuj przycisk tylko gdy jesteśmy poza home i portfolio
+        backToPortfolioBtn.classList.add('visible');
+    } else {
+        backToPortfolioBtn.classList.remove('visible');
+    }
+}
+
+// Obsługa kliknięcia przycisku
+backToPortfolioBtn.addEventListener('click', () => {
+    currentSection = 1; // portfolio jest drugą sekcją (index 1)
+    sections[currentSection].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+});
+
+// Aktualizuj przycisk przy zmianie sekcji
+const originalWheelHandler = window.addEventListener('wheel', (e) => {
+    if (isScrolling) return;
+    
+    isScrolling = true;
+    
+    if (e.deltaY > 0 && currentSection < sections.length - 1) {
+        currentSection++;
+    } else if (e.deltaY < 0 && currentSection > 0) {
+        currentSection--;
+    }
+    
+    sections[currentSection].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+    
+    // Aktualizuj przycisk
+    updateBackToPortfolioButton();
+    
+    setTimeout(() => {
+        isScrolling = false;
+    }, 1000);
+});
+
+// Aktualizuj przycisk również przy użyciu klawiszy
+window.addEventListener('keydown', (e) => {
+    if (isScrolling) return;
+    
+    if (e.key === 'ArrowDown' && currentSection < sections.length - 1) {
+        e.preventDefault();
+        currentSection++;
+        sections[currentSection].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        updateBackToPortfolioButton();
+    } else if (e.key === 'ArrowUp' && currentSection > 0) {
+        e.preventDefault();
+        currentSection--;
+        sections[currentSection].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        updateBackToPortfolioButton();
+    }
+});
+
+// Aktualizuj przycisk przy kliknięciu w nawigację
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const targetId = e.target.getAttribute('href').substring(1);
+        sections.forEach((section, index) => {
+            if (section.id === targetId) {
+                currentSection = index;
+                updateBackToPortfolioButton();
+            }
+        });
+    });
+});
+
+// Inicjalne ustawienie przycisku
+window.addEventListener('load', () => {
+    currentSection = 0;
+    updateBackToPortfolioButton();
+});
+
 // Wyłącz normalny scroll
 document.addEventListener('wheel', (e) => {
     e.preventDefault();
@@ -196,76 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-/* Stały przycisk powrotu do portfolio */
-.back-to-portfolio-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: linear-gradient(90deg, #3498db, #9b59b6);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    opacity: 0;
-    transform: translateX(-20px);
-    pointer-events: none;
-}
 
-.back-to-portfolio-btn.visible {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: all;
-}
-
-.back-to-portfolio-btn:hover {
-    transform: translateX(0) translateY(-3px);
-    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
-    background: linear-gradient(90deg, #2980b9, #8e44ad);
-}
-
-.back-to-portfolio-btn i {
-    font-size: 1rem;
-}
-
-.back-to-portfolio-btn span {
-    font-size: 0.9rem;
-}
-
-/* Responsywność dla przycisku */
-@media (max-width: 768px) {
-    .back-to-portfolio-btn {
-        padding: 10px 16px;
-        top: 15px;
-        left: 15px;
-    }
-    
-    .back-to-portfolio-btn span {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .back-to-portfolio-btn {
-        padding: 8px 12px;
-    }
-    
-    .back-to-portfolio-btn span {
-        display: none; /* Chowa tekst na bardzo małych ekranach */
-    }
-    
-    .back-to-portfolio-btn i {
-        font-size: 1.2rem;
-    }
-}
 
 
 
