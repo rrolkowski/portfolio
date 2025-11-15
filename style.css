@@ -25,7 +25,6 @@ section {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    z-index: 2; 
 }
 
 .container {
@@ -773,13 +772,16 @@ footer {
     }
 }
 
-/* === MATRIX RAIN — na absolutnie najwyższej warstwie === */
-.matrix-rain{
+/* === MATRIX RAIN — na absolutnie najwyższej warstwie (tymczasowo) === */
+canvas {
     position: fixed !important;
     inset: 0 !important;
-    z-index: 2147483647 !important; /* wyżej się już nie da :) */
-    pointer-events: none !important; /* nie blokuje klików */
+    display: block !important;
+    z-index: 2147483647 !important; /* wyżej się nie da */
+    pointer-events: none !important; /* nie zasłania klikalności */
 }
+
+
 
 
 
