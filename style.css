@@ -773,12 +773,15 @@ footer {
     }
 }
 
-.matrix-rain {
-    position: fixed;
-    inset: 0;
-    z-index: 1;            /* pod treścią, nad tłem */
-    pointer-events: none;  /* nie blokuje kliknięć */
+/* === MATRIX RAIN — na absolutnie najwyższej warstwie === */
+.matrix-rain{
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2147483647 !important; /* wyżej się już nie da :) */
+    pointer-events: none !important; /* nie blokuje klików */
 }
+
+
 
 
 
