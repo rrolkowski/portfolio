@@ -130,20 +130,45 @@ h2 {
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(5, 280px); /* 5 projektów w jednym rzędzie */
     gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: #3498db #1a1a3a;
 }
 
+/* Stylowanie scrollbara dla Webkit (Chrome, Safari, Edge) */
+.games-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.games-grid::-webkit-scrollbar-track {
+    background: #1a1a3a;
+    border-radius: 10px;
+}
+
+.games-grid::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 10px;
+}
+
+.games-grid::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+/* Responsywność */
 @media (max-width: 768px) {
     .games-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(5, 250px);
         gap: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .games-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(5, 220px);
+        gap: 1rem;
     }
 }
 
@@ -771,6 +796,7 @@ footer {
         height: 70px;
     }
 }
+
 
 
 
