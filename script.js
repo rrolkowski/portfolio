@@ -225,59 +225,78 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// === MATRIX RAIN – pełnoekranowy, w palecie strony ===
-(function () {
-    const canvas = document.getElementById('matrix-rain');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+// === MATRIX RAIN – full screen, Twoja paleta, nad wszystkim ===
 
-    // Kolory z Twojej palety (niebieski/fiolet)
-    const COLORS = ['#3498db', '#9b59b6', '#2980b9', '#4185d7'];
+// 1) Setup
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d', { alpha: true });
 
-    let w, h, fontSize, columns, drops;
+// Paleta z Twojej strony (neon niebieski/fiolet)
+const COLORS = ['#3498db', '#9b59b6', '#2980b9', '#4185d7'];
 
-    function resize() {
-        w = canvas.width  = window.innerWidth;
-        h = canvas.height = window.innerHeight;
+// Zestaw znaków: klasyczny "matrix" + cienkie kreski dla efektu linek
+const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVXYZ01|/\\I'.split('');
 
-        fontSize = Math.max(12, Math.floor(w / 120)); // wąskie “linie”
-        columns  = Math.floor(w / fontSize);
-        drops    = new Array(columns).fill(1);
-    }
+let fontSize = 14;   // wąski, czytelny deszcz
+let columns = 0;
+let drops = [];
 
-    function draw() {
-        // delikatny ślad, nie przyciemnia tła
-        ctx.fillStyle = 'rgba(10, 10, 22, 0.08)';
-        ctx.fillRect(0, 0, w, h);
+// 2) Rozmiar + DPI (ostrość na retina)
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  const cssW = window.innerWidth;
+  const cssH = window.innerHeight;
 
-        ctx.font = fontSize + 'px monospace';
-        ctx.textBaseline = 'top';
-        ctx.globalCompositeOperation = 'lighter'; // miękki glow
+  canvas.width = Math.floor(cssW * dpr);
+  canvas.height = Math.floor(cssH * dpr);
+  canvas.style.width = cssW + 'px';
+  canvas.style.height = cssH + 'px';
 
-        for (let i = 0; i < columns; i++) {
-            const x = i * fontSize;
-            const y = drops[i] * fontSize;
-            const charSet = '|/\\1I';
-            const text = charSet[Math.floor(Math.random() * charSet.length)];
+  // rysuj w jednostkach CSS, ale z ostrością dpr
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-            const c = COLORS[Math.floor(Math.random() * COLORS.length)];
-            ctx.fillStyle = c + 'cc'; // ~80% alfa
+  // kolumny zależne od fontSize i szerokości w jednostkach CSS
+  columns = Math.floor(cssW / fontSize);
+  drops = new Array(columns).fill(1);
+}
+resize();
+window.addEventListener('resize', resize);
 
-            ctx.fillText(text, x, y);
+// 3) Parametry rysowania (neon)
+ctx.textBaseline = 'top';
+ctx.globalCompositeOperation = 'lighter'; // lekki "glow"
 
-            if (y > h && Math.random() > 0.975) drops[i] = 0;
-            drops[i]++;
-        }
-        requestAnimationFrame(draw);
-    }
+// 4) Główna pętla
+function draw() {
+  // półprzezroczysty "trail": nie przyciemnia mocno, bo alpha niska
+  ctx.fillStyle = 'rgba(10, 10, 22, 0.08)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height); // UWAGA: szer/wys w px CSS już mamy pod setTransform
 
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = '#3498db';
+  ctx.font = `${fontSize}px monospace`;
 
-    resize();
-    draw();
-    window.addEventListener('resize', resize);
-})();
+  for (let i = 0; i < columns; i++) {
+    const x = i * fontSize;
+    const y = drops[i] * fontSize;
+
+    // losowy znak i kolor z palety
+    const text = LETTERS[(Math.random() * LETTERS.length) | 0];
+    const color = COLORS[(Math.random() * COLORS.length) | 0];
+
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = color;
+    ctx.fillStyle = color; // neon
+
+    ctx.fillText(text, x, y);
+
+    // reset kolumny
+    if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  }
+
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
 
 
 
