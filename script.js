@@ -226,6 +226,72 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// Matrix Rain Effect
+function createMatrixRain() {
+    const matrixContainer = document.querySelector('.matrix-rain');
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const columns = Math.floor(window.innerWidth / 20); // Odstępy między kolumnami
+    
+    for (let i = 0; i < columns; i++) {
+        const char = document.createElement('div');
+        char.className = 'matrix-char';
+        char.style.left = (i * 20) + 'px';
+        char.style.animationDelay = (Math.random() * 5) + 's';
+        char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        char.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
+        matrixContainer.appendChild(char);
+    }
+}
+
+// Funkcja do ciągłego aktualizowania Matrix Rain
+function updateMatrixRain() {
+    const matrixChars = document.querySelectorAll('.matrix-char');
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    
+    matrixChars.forEach(char => {
+        // Losowa zmiana znaków
+        if (Math.random() > 0.95) {
+            char.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        
+        // Resetowanie animacji gdy znak zniknie
+        const rect = char.getBoundingClientRect();
+        if (rect.top > window.innerHeight) {
+            char.style.top = '-50px';
+            char.style.animationDelay = '0s';
+        }
+    });
+}
+
+// Lepsza wersja - optymalizowana
+function createOptimizedMatrixRain() {
+    const matrixContainer = document.querySelector('.matrix-rain');
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const columns = Math.floor(window.innerWidth / 25);
+    
+    // Tworzenie kolumn z wieloma znakami
+    for (let i = 0; i < columns; i++) {
+        const column = document.createElement('div');
+        column.className = 'matrix-column';
+        column.style.position = 'absolute';
+        column.style.left = (i * 25) + 'px';
+        column.style.top = '-100px';
+        
+        // Ilość znaków w kolumnie
+        const charCount = Math.floor(Math.random() * 15) + 10;
+        
+        for (let j = 0; j < charCount; j++) {
+            const char = document.createElement('div');
+            char.className = 'matrix-char';
+            char.style.animationDelay = (Math.random() * 5) + 's';
+            char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            char.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
+            column.appendChild(char);
+        }
+        
+        matrixContainer.appendChild(column);
+    }
+}
 
 
 
