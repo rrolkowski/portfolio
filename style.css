@@ -772,14 +772,6 @@ footer {
     }
 }
 
-/* === MATRIX RAIN — na absolutnie najwyższej warstwie (tymczasowo) === */
-canvas {
-    position: fixed !important;
-    inset: 0 !important;
-    display: block !important;
-    z-index: 2147483647 !important; /* wyżej się nie da */
-    pointer-events: none !important; /* nie zasłania klikalności */
-}
 
 
 
