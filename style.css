@@ -50,6 +50,7 @@ section {
 /* Sekcja główna */
 #home {
     background: linear-gradient(135deg, #0a0a16 0%, #1a1a3a 100%);
+    text-align: center;
     position: relative;
     overflow: hidden;
 }
@@ -770,6 +771,7 @@ footer {
         height: 70px;
     }
 }
+
 
 
 
