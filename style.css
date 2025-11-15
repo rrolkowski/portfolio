@@ -130,31 +130,32 @@ h2 {
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 kolumn w jednym rzędzie */
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
     gap: 2rem;
 }
 
 @media (max-width: 1200px) {
     .games-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 kolumny na średnich ekranach */
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
     }
 }
 
 @media (max-width: 992px) {
     .games-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 kolumny na tabletach */
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
     }
 }
 
 @media (max-width: 768px) {
     .games-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 kolumny na mniejszych tabletach */
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        gap: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .games-grid {
-        grid-template-columns: 1fr; /* 1 kolumna na telefonach */
+        grid-template-columns: 1fr;
     }
 }
 
@@ -782,6 +783,7 @@ footer {
         height: 70px;
     }
 }
+
 
 
 
