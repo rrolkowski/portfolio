@@ -14,7 +14,6 @@ body {
     color: #e0e0ff;
     overflow-x: hidden;
     line-height: 1.6;
-    scroll-snap-type: y proximity; 
 }
 
 /* Sekcje */
@@ -26,8 +25,6 @@ section {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
 }
 
 .container {
@@ -786,6 +783,7 @@ footer {
         height: 70px;
     }
 }
+
 
 
 
