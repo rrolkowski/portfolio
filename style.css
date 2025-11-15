@@ -34,9 +34,9 @@ section {
 }
 
 /* Sekcja główna */
+/* Sekcja główna - MATRIX RAIN z tekstem */
 #home {
-    background: 
-        linear-gradient(135deg, #0a0a16 0%, #1a1a3a 100%);
+    background: linear-gradient(135deg, #0a0a16 0%, #1a1a3a 100%);
     position: relative;
     overflow: hidden;
 }
@@ -44,29 +44,29 @@ section {
 #home::before {
     content: '';
     position: absolute;
-    top: -100%;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 300%; /* Większa wysokość dla płynnego efektu */
+    height: 100%;
     background: 
         repeating-linear-gradient(
             0deg,
-            transparent 0%,
-            transparent 1%,
-            rgba(52, 152, 219, 0.2) 1.5%,
-            rgba(52, 152, 219, 0.2) 2%
+            rgba(0, 255, 0, 0) 0px,
+            rgba(0, 255, 0, 0) 2px,
+            rgba(0, 255, 0, 0.1) 2px,
+            rgba(0, 255, 0, 0.1) 4px
         );
-    animation: matrixRain 8s linear infinite;
+    animation: matrixRain 20s linear infinite;
     pointer-events: none;
     z-index: 1;
 }
 
 @keyframes matrixRain {
-    0% { 
-        transform: translateY(-66%);
+    0% {
+        background-position: 0 0;
     }
-    100% { 
-        transform: translateY(0%);
+    100% {
+        background-position: 0 100%;
     }
 }
 
@@ -786,6 +786,7 @@ footer {
         height: 70px;
     }
 }
+
 
 
 
