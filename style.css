@@ -771,7 +771,19 @@ footer {
         height: 70px;
     }
 }
+
+.matrix-rain {
+    position: fixed;
+    inset: 0;
+    z-index: 1;            /* pod treścią, nad tłem */
+    pointer-events: none;  /* nie blokuje kliknięć */
 }
+
+/* Upewniamy się, że sekcje są NAD efektem */
+section {
+    z-index: 2;
+}
+
 
 
 
