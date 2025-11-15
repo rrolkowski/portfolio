@@ -33,28 +33,30 @@ section {
     width: 100%;
 }
 
-/* Sekcja główna */
-#home {
-    background: linear-gradient(135deg, #0a0a16 0%, #1a1a3a 100%);
-    text-align: center;
-    position: relative;
-}
-
-#home::before {
-    content: '';
+.hero-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(41, 128, 185, 0.1)"/></svg>');
-    background-size: cover;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(52, 152, 219, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(155, 89, 182, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(41, 128, 185, 0.2) 0%, transparent 50%);
+    filter: blur(40px);
     z-index: 0;
+}
+
+/* Sekcja główna */
+#home {
+    background: linear-gradient(135deg, #0a0a16 0%, #1a1a3a 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 h1 {
@@ -768,6 +770,7 @@ footer {
         height: 70px;
     }
 }
+
 
 
 
