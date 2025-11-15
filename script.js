@@ -1,251 +1,188 @@
-// Płynne przewijanie do sekcji
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetSection = document.querySelector(this.getAttribute('href'));
-        targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    });
-});
-
-// Stały przycisk powrotu do portfolio
-const backToPortfolioBtn = document.getElementById('back-to-portfolio');
-
-function updateBackToPortfolioButton() {
-    if (currentSection > 1) { // Pokazuj przycisk tylko gdy jesteśmy poza home i portfolio
-        backToPortfolioBtn.classList.add('visible');
-    } else {
-        backToPortfolioBtn.classList.remove('visible');
-    }
-}
-
-// Obsługa kliknięcia przycisku
-backToPortfolioBtn.addEventListener('click', () => {
-    currentSection = 1; // portfolio jest drugą sekcją (index 1)
-    sections[currentSection].scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-    updateBackToPortfolioButton();
-});
-
-//slajdy
+// Sekcje strony i logika pełnoekranowego scrolla
 const sections = Array.from(document.querySelectorAll("section"));
 let currentIndex = 0;
 let isScrolling = false;
 
-window.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    if (isScrolling) return;
+// Bezpieczne przewijanie do konkretnej sekcji po indeksie
+function scrollToSection(index) {
+    if (index < 0 || index >= sections.length) return;
 
+    currentIndex = index;
     isScrolling = true;
 
-    if (e.deltaY > 0 && currentIndex < sections.length - 1) {
-        currentIndex++;
-    } else if (e.deltaY < 0 && currentIndex > 0) {
-        currentIndex--;
-    }
+    sections[currentIndex].scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 
-    sections[currentIndex].scrollIntoView({ behavior: "smooth" });
+    updateBackToPortfolioButton();
 
     setTimeout(() => {
         isScrolling = false;
-    }, 700); // <— TU ZMIENIASZ SZYBKOŚĆ
-}, { passive: false });
+    }, 700);
+}
 
+// Scroll kółkiem: jedno muśnięcie = jedna sekcja
+window.addEventListener(
+    "wheel",
+    (e) => {
+        if (e.ctrlKey || e.metaKey) return;
 
-// Obsługa klawiszy strzałek
-window.addEventListener('keydown', (e) => {
+        e.preventDefault();
+        if (isScrolling) return;
+
+        if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+            scrollToSection(currentIndex + 1);
+        } else if (e.deltaY < 0 && currentIndex > 0) {
+            scrollToSection(currentIndex - 1);
+        }
+    },
+    { passive: false }
+);
+
+// Strzałki góra/dół też mogą zmieniać sekcje
+window.addEventListener("keydown", (e) => {
     if (isScrolling) return;
-    
-    if (e.key === 'ArrowDown' && currentSection < sections.length - 1) {
+
+    if (e.key === "ArrowDown" && currentIndex < sections.length - 1) {
         e.preventDefault();
-        currentSection++;
-        sections[currentSection].scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        updateBackToPortfolioButton();
-    } else if (e.key === 'ArrowUp' && currentSection > 0) {
+        scrollToSection(currentIndex + 1);
+    } else if (e.key === "ArrowUp" && currentIndex > 0) {
         e.preventDefault();
-        currentSection--;
-        sections[currentSection].scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        updateBackToPortfolioButton();
+        scrollToSection(currentIndex - 1);
     }
 });
 
-// Obsługa kliknięcia w nawigację
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-        const targetId = e.target.getAttribute('href').substring(1);
-        sections.forEach((section, index) => {
-            if (section.id === targetId) {
-                currentSection = index;
-                updateBackToPortfolioButton();
-            }
-        });
+// Płynne przewijanie po kliknięciu w linki z #
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+        const targetSection = document.querySelector(this.getAttribute("href"));
+        if (!targetSection) return;
+
+        e.preventDefault();
+
+        const index = sections.indexOf(targetSection);
+        if (index !== -1) {
+            scrollToSection(index);
+        } else {
+            targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
     });
 });
+
+// Przycisk "Moje Projekty" w lewym górnym rogu
+const backToPortfolioBtn = document.getElementById("back-to-portfolio");
+const portfolioIndex = sections.findIndex((sec) => sec.id === "portfolio");
+
+function updateBackToPortfolioButton() {
+    if (!backToPortfolioBtn || portfolioIndex === -1) return;
+
+    if (currentIndex > portfolioIndex) {
+        backToPortfolioBtn.classList.add("visible");
+    } else {
+        backToPortfolioBtn.classList.remove("visible");
+    }
+}
+
+if (backToPortfolioBtn && portfolioIndex !== -1) {
+    backToPortfolioBtn.addEventListener("click", () => {
+        scrollToSection(portfolioIndex);
+    });
+}
+
+// Funkcja wywoływana z HTML: kliknięcie w kartę gry w "Moje Projekty"
+function scrollToGame(gameId) {
+    const targetSection = document.getElementById(gameId);
+    if (!targetSection) return;
+
+    const index = sections.indexOf(targetSection);
+    if (index !== -1) {
+        scrollToSection(index);
+    } else {
+        targetSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+}
 
 // Animacja pojawiania się elementów podczas scrollowania
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: "0px 0px -50px 0px"
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+const appearObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
         }
     });
 }, observerOptions);
 
-// Obserwowanie elementów do animacji
-document.querySelectorAll('.game-card, .game-detail-container, .skill-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-});
-
-// Inicjalne ustawienie
-window.addEventListener('load', () => {
-    currentSection = 0;
-    updateBackToPortfolioButton();
-});
-
-// Funkcja do pokazywania szczegółów gry
-function showGameDetail(gameId) {
-    // Ukryj wszystkie sekcje gier
-    document.querySelectorAll('.game-detail-section').forEach(section => {
-        section.classList.remove('active');
+// Dopasowane klasy do Twojego HTML
+document
+    .querySelectorAll(".game-card, .improved-game-layout, .skill-card")
+    .forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(20px)";
+        el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        appearObserver.observe(el);
     });
-    
-    // Pokaż wybraną sekcję
-    const targetSection = document.getElementById(gameId);
-    if (targetSection) {
-        targetSection.classList.add('active');
-        targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        
-        // Aktualizuj currentSection dla scroll snapping
-        const sections = document.querySelectorAll('section');
-        sections.forEach((section, index) => {
-            if (section.id === gameId) {
-                currentSection = index;
-            }
-        });
-    }
-}
 
-// Proste przewijanie do sekcji gry
-function scrollToGame(gameId) {
-    const targetSection = document.getElementById(gameId);
-    if (targetSection) {
-        targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        
-        // Aktualizuj currentSection dla scroll snapping
-        sections.forEach((section, index) => {
-            if (section.id === gameId) {
-                currentSection = index;
-            }
-        });
-        updateBackToPortfolioButton();
-    }
-}
+// Zamiana obrazków w galeriach
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".small-images-row").forEach((smallImagesRow) => {
+        const smallImages = smallImagesRow.querySelectorAll(".small-img");
 
-// Prosta zamiana obrazków - KAŻDA GALERIA OSOBNO
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.small-images-row').forEach(smallImagesRow => {
-        const smallImages = smallImagesRow.querySelectorAll('.small-img');
-        
-        smallImages.forEach(smallImg => {
-            smallImg.addEventListener('click', function() {
-                const clickedImage = this.querySelector('img');
-                const mainImage = this.closest('.images-column').querySelector('.main-image img');
-                
-                if (mainImage && clickedImage.src) {
+        smallImages.forEach((smallImg) => {
+            smallImg.addEventListener("click", function () {
+                const clickedImage = this.querySelector("img");
+                const mainImage = this.closest(".images-column").querySelector(".main-image img");
+
+                if (mainImage && clickedImage && clickedImage.src) {
                     mainImage.src = clickedImage.src;
-                    
-                    smallImages.forEach(img => img.classList.remove('active'));
-                    this.classList.add('active');
+
+                    smallImages.forEach((img) => img.classList.remove("active"));
+                    this.classList.add("active");
                 }
             });
         });
     });
 });
 
-// Obsługa autoodtwarzania filmiku tylko gdy sekcja jest widoczna
-document.addEventListener('DOMContentLoaded', function() {
-    const fallThroneVideo = document.getElementById('fall-throne-video');
+// Autoodtwarzanie filmiku dla Fall Throne
+document.addEventListener("DOMContentLoaded", function () {
+    const fallThroneVideo = document.getElementById("fall-throne-video");
     let videoStarted = false;
 
-    // Obserwator sprawdzający widoczność sekcji
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !videoStarted) {
-                // Sekcja jest widoczna - uruchom filmik
-                const videoUrl = fallThroneVideo.src + "&autoplay=1";
-                fallThroneVideo.src = videoUrl;
-                videoStarted = true;
-            }
-        });
-    }, { threshold: 0.5 }); // 50% sekcji musi być widoczne
+    if (!fallThroneVideo) return;
 
-    // Obserwuj sekcję Fall Throne
-    const fallThroneSection = document.getElementById('fall-throne');
-    if (fallThroneSection && fallThroneVideo) {
-        observer.observe(fallThroneSection);
-    }
+    const fallThroneSection = document.getElementById("fall-throne");
+    if (!fallThroneSection) return;
+
+    const videoObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !videoStarted) {
+                    const videoUrl = fallThroneVideo.src + "&autoplay=1";
+                    fallThroneVideo.src = videoUrl;
+                    videoStarted = true;
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+
+    videoObserver.observe(fallThroneSection);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Startowe ustawienie
+window.addEventListener("load", () => {
+    currentIndex = 0;
+    updateBackToPortfolioButton();
+});
