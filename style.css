@@ -34,18 +34,28 @@ section {
 }
 
 /* Sekcja główna */
-/* Sekcja główna - MATRIX RAIN z tekstem */
 #home {
     background: linear-gradient(135deg, #0a0a16 0%, #1a1a3a 100%);
     text-align: center;
     position: relative;
 }
 
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(41, 128, 185, 0.1)"/></svg>');
+    background-size: cover;
+    z-index: 0;
+}
+
 .hero-content {
     position: relative;
     z-index: 1;
 }
-
 
 h1 {
     font-size: 4.5rem;
@@ -758,76 +768,6 @@ footer {
         height: 70px;
     }
 }
-
-/* ===== MATRIX RAIN EFFECT ===== */
-.matrix-rain {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.matrix-rain::before {
-    content: '01010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    color: rgba(0, 255, 0, 0.3);
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
-    line-height: 1;
-    animation: matrixFall 15s linear infinite;
-}
-
-.matrix-rain::after {
-    content: '10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010';
-    position: absolute;
-    top: -100%;
-    left: 20%;
-    width: 100%;
-    color: rgba(0, 255, 0, 0.2);
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 1;
-    animation: matrixFall 12s linear infinite;
-    animation-delay: 3s;
-}
-
-@keyframes matrixFall {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(100vh);
-    }
-}
-
-/* Upewnij się że treść jest nad Matrix */
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.back-to-portfolio-btn {
-    z-index: 1000; /* przycisk nad wszystkim */
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
