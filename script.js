@@ -133,6 +133,16 @@ document.querySelectorAll('.game-card, .game-detail-container, .skill-card').for
 window.addEventListener('load', () => {
     currentSection = 0;
     updateBackToPortfolioButton();
+    createOptimizedMatrixRain();
+
+    setInterval(updateMatrixRain, 100);
+});
+
+// Reakcja na zmianę rozmiaru okna
+window.addEventListener('resize', () => {
+    const matrixContainer = document.querySelector('.matrix-rain');
+    matrixContainer.innerHTML = '';
+    createOptimizedMatrixRain();
 });
 
 // Funkcja do pokazywania szczegółów gry
@@ -292,6 +302,7 @@ function createOptimizedMatrixRain() {
         matrixContainer.appendChild(column);
     }
 }
+
 
 
 
