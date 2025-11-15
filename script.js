@@ -31,6 +31,29 @@ backToPortfolioBtn.addEventListener('click', () => {
     updateBackToPortfolioButton();
 });
 
+//slajdy
+const sections = Array.from(document.querySelectorAll("section"));
+let currentIndex = 0;
+let isScrolling = false;
+
+window.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    if (isScrolling) return;
+
+    isScrolling = true;
+
+    if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+        currentIndex++;
+    } else if (e.deltaY < 0 && currentIndex > 0) {
+        currentIndex--;
+    }
+
+    sections[currentIndex].scrollIntoView({ behavior: "smooth" });
+
+    setTimeout(() => {
+        isScrolling = false;
+    }, 700); // <— TU ZMIENIASZ SZYBKOŚĆ
+}, { passive: false });
 
 
 // Obsługa klawiszy strzałek
@@ -187,6 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(fallThroneSection);
     }
 });
+
 
 
 
