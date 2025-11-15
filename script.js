@@ -225,59 +225,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// === MATRIX RAIN – pełnoekranowy, w kolorach strony ===
+// === MATRIX RAIN – pełnoekranowy, w palecie strony ===
 (function () {
     const canvas = document.getElementById('matrix-rain');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    // Kolory spójne z paletą strony
+    // Kolory z Twojej palety (niebieski/fiolet)
     const COLORS = ['#3498db', '#9b59b6', '#2980b9', '#4185d7'];
 
     let w, h, fontSize, columns, drops;
 
     function resize() {
-        w = canvas.width = window.innerWidth;
+        w = canvas.width  = window.innerWidth;
         h = canvas.height = window.innerHeight;
 
-        // Subtelny, cienki "deszcz"
-        fontSize = Math.max(12, Math.floor(w / 120)); // skaluje się z szerokością
-        columns = Math.floor(w / fontSize);
-        drops = new Array(columns).fill(1);
+        fontSize = Math.max(12, Math.floor(w / 120)); // wąskie “linie”
+        columns  = Math.floor(w / fontSize);
+        drops    = new Array(columns).fill(1);
     }
 
     function draw() {
-        // Delikatny zanik śladu (przezroczysty fill)
-        ctx.fillStyle = 'rgba(10, 10, 22, 0.08)'; // półprzezroczyste, żeby nie przyciemniać tła
+        // delikatny ślad, nie przyciemnia tła
+        ctx.fillStyle = 'rgba(10, 10, 22, 0.08)';
         ctx.fillRect(0, 0, w, h);
 
-        ctx.font = fontSize + "px monospace";
-        ctx.textBaseline = "top";
+        ctx.font = fontSize + 'px monospace';
+        ctx.textBaseline = 'top';
         ctx.globalCompositeOperation = 'lighter'; // miękki glow
 
         for (let i = 0; i < columns; i++) {
             const x = i * fontSize;
             const y = drops[i] * fontSize;
-
-            // losowy znak; "cienkie, świetliste linie" uzyskamy mieszając pionowe znaki i cyfry
             const charSet = '|/\\1I';
             const text = charSet[Math.floor(Math.random() * charSet.length)];
 
-            // losowy kolor z palety, lekko przezroczysty
             const c = COLORS[Math.floor(Math.random() * COLORS.length)];
-            ctx.fillStyle = c + 'cc'; // ~80% alfa (CC)
+            ctx.fillStyle = c + 'cc'; // ~80% alfa
 
             ctx.fillText(text, x, y);
 
-            // reset kolumny z niewielką losowością aby były różne długości spadania
             if (y > h && Math.random() > 0.975) drops[i] = 0;
             drops[i]++;
         }
-
         requestAnimationFrame(draw);
     }
 
-    // Glow delikatnego obrysu (subtelny blur)
     ctx.shadowBlur = 8;
     ctx.shadowColor = '#3498db';
 
@@ -285,6 +278,8 @@ document.addEventListener('DOMContentLoaded', function() {
     draw();
     window.addEventListener('resize', resize);
 })();
+
+
 
 
 
