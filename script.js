@@ -10,6 +10,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Stały przycisk powrotu do portfolio
+const backToPortfolioBtn = document.getElementById('back-to-portfolio');
+
+function updateBackToPortfolioButton() {
+    if (currentSection > 1) { // Pokazuj przycisk tylko gdy jesteśmy poza home i portfolio
+        backToPortfolioBtn.classList.add('visible');
+    } else {
+        backToPortfolioBtn.classList.remove('visible');
+    }
+}
+
+// Obsługa kliknięcia przycisku
+backToPortfolioBtn.addEventListener('click', () => {
+    currentSection = 1; // portfolio jest drugą sekcją (index 1)
+    sections[currentSection].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+    updateBackToPortfolioButton();
+});
+
 // Wyłącz normalny scroll
 document.addEventListener('wheel', (e) => {
     e.preventDefault();
@@ -43,28 +64,6 @@ window.addEventListener('wheel', (e) => {
         isScrolling = false;
     }, 1000);
 });
-
-// Stały przycisk powrotu do portfolio
-const backToPortfolioBtn = document.getElementById('back-to-portfolio');
-
-function updateBackToPortfolioButton() {
-    if (currentSection > 1) { // Pokazuj przycisk tylko gdy jesteśmy poza home i portfolio
-        backToPortfolioBtn.classList.add('visible');
-    } else {
-        backToPortfolioBtn.classList.remove('visible');
-    }
-}
-
-// Obsługa kliknięcia przycisku
-backToPortfolioBtn.addEventListener('click', () => {
-    currentSection = 1; // portfolio jest drugą sekcją (index 1)
-    sections[currentSection].scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-    updateBackToPortfolioButton();
-});
-
 
 // Obsługa klawiszy strzałek
 window.addEventListener('keydown', (e) => {
@@ -220,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(fallThroneSection);
     }
 });
+
 
 
 
