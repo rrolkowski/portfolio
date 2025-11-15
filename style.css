@@ -7,7 +7,7 @@
 
 html {
     sscroll-behavior: smooth;
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
 }
 
 body {
@@ -787,6 +787,7 @@ footer {
         height: 70px;
     }
 }
+
 
 
 
