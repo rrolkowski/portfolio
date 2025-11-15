@@ -25,6 +25,7 @@ section {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    z-index: 2; 
 }
 
 .container {
@@ -779,10 +780,6 @@ footer {
     pointer-events: none;  /* nie blokuje kliknięć */
 }
 
-/* Upewniamy się, że sekcje są NAD efektem */
-section {
-    z-index: 2;
-}
 
 
 
