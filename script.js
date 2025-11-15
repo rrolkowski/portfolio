@@ -31,44 +31,6 @@ backToPortfolioBtn.addEventListener('click', () => {
     updateBackToPortfolioButton();
 });
 
-// Wyłącz normalny scroll
-document.addEventListener('wheel', (e) => {
-    e.preventDefault();
-}, { passive: false });
-
-// Scroll snapping - TYLKO między sekcjami
-let isScrolling = false;
-let currentSection = 0;
-const sections = document.querySelectorAll('section');
-
-// Obsługa scrolla - TYLKO zmiana sekcji
-window.addEventListener('wheel', (e) => {
-    if (isScrolling) return;
-    
-    isScrolling = true;
-    
-    if (e.deltaY > 0 && currentSection < sections.length - 1) {
-        // Scroll w dół - następna sekcja
-        currentSection++;
-    } else if (e.deltaY < 0 && currentSection > 0) {
-        // Scroll w górę - poprzednia sekcja
-        currentSection--;
-    }
-    
-    // Przewijanie do sekcji
-    sections[currentSection].scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-
-     // Aktualizuj przycisk
-    updateBackToPortfolioButton();
-    
-    // Reset flagi po zakończeniu animacji
-    setTimeout(() => {
-        isScrolling = false;
-    }, 1000);
-});
 
 // Obsługa klawiszy strzałek
 window.addEventListener('keydown', (e) => {
@@ -224,6 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(fallThroneSection);
     }
 });
+
 
 
 
