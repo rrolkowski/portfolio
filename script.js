@@ -10,6 +10,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Wyłącz normalny scroll
+document.addEventListener('wheel', (e) => {
+    e.preventDefault();
+}, { passive: false });
+
+// Scroll snapping - TYLKO między sekcjami
+let isScrolling = false;
+let currentSection = 0;
+const sections = document.querySelectorAll('section');
+
+// Obsługa scrolla - TYLKO zmiana sekcji
+window.addEventListener('wheel', (e) => {
+    if (isScrolling) return;
+
+    isScrolling = true;
+
+    if (e.deltaY > 0 && currentSection < sections.length - 1) {
+        currentSection++;
+    } else if (e.deltaY < 0 && currentSection > 0) {
+        currentSection--;
+    }
+
+    sections[currentSection].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+    updateBackToPortfolioButton();
+
+    setTimeout(() => {
+        isScrolling = false;
+    }, 1000);
+});
+
 // Stały przycisk powrotu do portfolio
 const backToPortfolioBtn = document.getElementById('back-to-portfolio');
 
@@ -186,6 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(fallThroneSection);
     }
 });
+
 
 
 
