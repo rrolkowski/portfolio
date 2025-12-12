@@ -788,35 +788,6 @@ footer {
     }
 }
 
-.lang-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(90deg, #3498db, #9b59b6);
-    color: #fff;
-    padding: 12px 16px;
-    border-radius: 30px;
-    font-weight: 700;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    z-index: 1100;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.lang-toggle:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
-}
-
-@media (max-width: 768px) {
-    .lang-toggle {
-        top: 15px;
-        right: 15px;
-        padding: 10px 14px;
-    }
-}
-
 
 
 
