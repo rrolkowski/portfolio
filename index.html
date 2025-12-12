@@ -17,8 +17,11 @@
     <!-- Stały przycisk powrotu do portfolio -->
     <div id="back-to-portfolio" class="back-to-portfolio-btn">
         <i class="fas fa-arrow-left"></i>
-        <span>Moje Projekty</span>
+        <span data-i18n="nav.myProjects">Moje Projekty</span>
     </div>
+    <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">
+    EN
+    </button>
     <!-- Sekcja główna -->
     <section id="home">
         <div class="container">
@@ -26,7 +29,7 @@
             <div class="hero-content">
                 <h1>Rółkowski Rafał</h1>
                 <h2>GAMEPLAY PROGRAMMER</h2>
-                <p class="description">Specjalizuję się jako Gameplay Programmer z pasją do AI w grach. Pracuję głównie w Unity, pisząc kod w C#. Moje doświadczenie obejmuje projektowanie mechanik gracza, przeciwników AI oraz systemów nawigacji.</p>
+                <p class="description" data-i18n="home.about">Specjalizuję się jako Gameplay Programmer z pasją do AI w grach. Pracuję głównie w Unity, pisząc kod w C#. Moje doświadczenie obejmuje projektowanie mechanik gracza, przeciwników AI oraz systemów nawigacji.</p>
                 
                 <!-- Technical Skills -->
                 <div class="skills-section">
@@ -55,7 +58,7 @@
                     </div>
                 </div>
                 
-                <a href="#portfolio" class="btn">Zobacz moje projekty</a>
+                <a href="#portfolio" class="btn" data-i18n="home.cta">Zobacz moje projekty</a>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -66,7 +69,7 @@
     <!-- Sekcja portfolio -->
     <section id="portfolio">
         <div class="container">
-            <h2 class="section-title">Moje Projekty</h2>
+            <h2 class="section-title" data-i18n="portfolio.title">Moje Projekty</h2>
             <div class="games-grid">
                 <!-- Laser Defender -->
                 <div class="game-card" onclick="scrollToGame('laser-defender')">
@@ -78,11 +81,12 @@
                     </div>
                     <div class="game-content">
                         <h3 class="game-title">Laser Defender</h3>
-                        <p class="game-description">Klasyczny space shooter 2D</p>
+                        <p class="game-description" data-i18n="card.laserDefender">Klasyczny space shooter 2D</p>
                         <div class="game-tech">
                             <span class="tech-tag">Unity</span>
                             <span class="tech-tag">C#</span>
                             <span class="tech-tag">2D</span>
+                            <span class="tech-tag">Solo Developer</span>
                         </div>
                     </div>
                 </div>
@@ -97,11 +101,12 @@
                     </div>
                     <div class="game-content">
                         <h3 class="game-title">Out of The Madness</h3>
-                        <p class="game-description">Niekończąca się gra zręcznościowa</p>
+                        <p class="game-description" data-i18n="card.ootm">Niekończąca się gra zręcznościowa</p>
                         <div class="game-tech">
                             <span class="tech-tag">Unity</span>
                             <span class="tech-tag">C#</span>
                             <span class="tech-tag">2.5D</span>
+                            <span class="tech-tag">Solo Developer</span>
                         </div>
                     </div>
                 </div>
@@ -116,11 +121,12 @@
                     </div>
                     <div class="game-content">
                         <h3 class="game-title">Fall Throne</h3>
-                        <p class="game-description">Tower defense gdzie można przenosić wszystko!</p>
+                        <p class="game-description" data-i18n="card.fallThrone">Tower defense gdzie można przenosić wszystko!</p>
                         <div class="game-tech">
                             <span class="tech-tag">Unity</span>
                             <span class="tech-tag">C#</span>
                             <span class="tech-tag">3D</span>
+                            <span class="tech-tag">Team Project</span>
                         </div>
                     </div>
                 </div>
@@ -141,6 +147,7 @@
                             <span class="tech-tag">C#</span>
                             <span class="tech-tag">3D</span>
                             <span class="tech-tag">2D</span>
+                            <span class="tech-tag">Team Project</span>
                         </div>
                     </div>
                 </div>
@@ -155,7 +162,7 @@
                     </div>
                     <div class="game-content">
                         <h3 class="game-title">Gameplay Mechanics</h3>
-                        <p class="game-description">Kolekcja moich mechanik rozgrywki do gry hack-and-slash</p>
+                        <p class="game-description" data-i18n="card.mechanics">Kolekcja moich mechanik rozgrywki do gry hack-and-slash</p>
                         <div class="game-tech">
                             <span class="tech-tag">Unity</span>
                             <span class="tech-tag">C#</span>
@@ -214,17 +221,17 @@
             <!-- Prawa strona - informacje -->
             <div class="info-column">
                 <h2 class="game-detail-title">Laser Defender</h2>
-                <p class="game-detail-description">Laser Defender to klasyczny space shooter 2D, w którym sterujesz statkiem kosmicznym, eliminujesz fale wrogów i zbierasz punkty</p>
+                <p class="game-detail-description" data-i18n="laser.desc">Laser Defender to klasyczny space shooter 2D, w którym sterujesz statkiem kosmicznym, eliminujesz fale wrogów i zbierasz punkty</p>
                 
                 <div class="game-features">
-                    <h3>Stworzone funkcje:</h3>
+                    <h3 data-i18n="common.featuresBuilt">Stworzone funkcje:</h3>
                     <ul class="feature-list">
-                        <li><i class="fa-solid fa-code"></i> Stworzyłem logikę sterowania statkiem gracza</li>
-                        <li><i class="fa-solid fa-code"></i> Zaimplementowałem przeciwników z czasowym wyprowadzaniem ataków</li>
-                        <li><i class="fa-solid fa-code"></i> Zaprogramowałem system fal przeciwników z rosnącym poziomem trudności</li>
-                        <li><i class="fa-solid fa-code"></i> Zoptymalizowałem wydajność dla płynnej rozgrywki na PC oraz na urządzenia mobilne</li>
-                        <li><i class="fa-solid fa-palette"></i> Stworzyłem grafikę i VFX</li>
-                        <li><i class="fa-solid fa-compass-drafting"></i> Zaprojektowałem interfejs użytkownika </li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="laser.f1"> Stworzyłem logikę sterowania statkiem gracza</span></li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="laser.f2"> Zaimplementowałem przeciwników z czasowym wyprowadzaniem ataków</span></li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="laser.f3"> Zaprogramowałem system fal przeciwników z rosnącym poziomem trudności</span></li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="laser.f4"> Zoptymalizowałem wydajność dla płynnej rozgrywki na PC oraz na urządzenia mobilne</span></li>
+                        <li><i class="fa-solid fa-palette"></i><span data-i18n="laser.f5"> Stworzyłem grafikę i VFX</span></li>
+                        <li><i class="fa-solid fa-compass-drafting"></i><span data-i18n="laser.f6"> Zaprojektowałem interfejs użytkownika </span></li>
                     </ul>
                 </div>
                 
@@ -288,17 +295,17 @@
             <!-- Prawa strona - informacje -->
             <div class="info-column">
                 <h2 class="game-detail-title">Out of The Madness</h2>
-                <p class="game-detail-description">An endless runner type arcade game with a psychiatric hospital theme.</p>
+                <p class="game-detail-description" data-i18n="ootm.desc">Niekończąca się gra zręcznościowa typu runner, której motywem jest szpital psychiatryczny.</p>
                 
                 <div class="game-features">
-                    <h3>Stworzone funkcje:</h3>
+                    <h3 data-i18n="common.featuresBuilt">Stworzone funkcje:</h3>
                     <ul class="feature-list">
-                        <li><i class="fa-solid fa-code"></i> Zaprojektowałem i zaimplementowałem główne mechaniki endless runnera.</li>
-                        <li><i class="fa-solid fa-code"></i> Opracowałem system spawnu przeciwników oparty na detekcji ilości obiektów w jednej lini.</li>
-                        <li><i class="fa-solid fa-code"></i> Zaimplementowałem system punktacji opartą na czasie. (wynik punktów w metrach)</li>
-                        <li><i class="fa-solid fa-code"></i> Zoptymalizowałem wydajność gry dla płynnego działania w Unity.</li>
-                        <li><i class="fa-solid fa-code"></i> Stworzyłem mechanikę boosta opartą na zbieraniu strzykawek i aktywacji czasowych bonusów.</li>
-                        <li><i class="fa-solid fa-palette"></i> Stworzyłem oprawę graficzną w klimacie szpitala psychiatrycznego, wzmacniającą atmosferę rozgrywki.</li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="ootm.f1"> Zaprojektowałem i zaimplementowałem główne mechaniki endless runnera.</span></li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="ootm.f2"> Opracowałem system spawnu przeciwników oparty na detekcji ilości obiektów w jednej lini.</span></li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="ootm.f3"> Zaimplementowałem system punktacji opartą na czasie. (wynik punktów w metrach)</span></li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="ootm.f4"> Zoptymalizowałem wydajność gry dla płynnego działania w Unity.</span></li>
+                        <li><i class="fa-solid fa-code"></i><span data-i18n="ootm.f5"> Stworzyłem mechanikę boosta opartą na zbieraniu strzykawek i aktywacji czasowych bonusów.</span></li>
+                        <li><i class="fa-solid fa-palette"></i><span data-i18n="ootm.f6"> Stworzyłem oprawę graficzną w klimacie szpitala psychiatrycznego, wzmacniającą atmosferę rozgrywki.</span></li>
                     </ul>
                 </div>
                 
@@ -339,18 +346,18 @@
             <!-- PRAWA STRONA - INFORMACJE -->
             <div class="info-column">
                 <h2 class="game-detail-title">Fall Throne</h2>
-                <p class="game-detail-description">A TOWER DEFENSE GAME WHERE YOU CAN CARRY ANYTHING!</p>
+                <p class="game-detail-description" data-i18n="fall.desc">Gra typu Tower Defense, w której możesz nosić wszystko!</p>
                     
                     <div class="game-features">
-                        <h3>Stworzone funkcje:</h3>
+                        <h3 data-i18n="common.featuresBuilt">Stworzone funkcje:</h3>
                         <ul class="feature-list">
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem system pathfindingu oparty na algorytmie A, zintegrowany z Tilemap, umożliwiający dynamiczne wyznaczanie tras.</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem różnorodne mechaniki ataków wież, obejmujące odmienne style obrażeń i logikę celowania.</li>
-                            <li><i class="fa-solid fa-code"></i> Zaimplementowałem systemy UI oraz mechaniki życia, ekonomii i zarządzania wieżami.</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem system „grab & throw”, w której można podnosić wyznaczone przedmioty oraz nimi rzucać.</li>
-                            <li><i class="fa-solid fa-code"></i> Udoskonaliłem „grab & throw” z zapamiętywaniem ostatniej ścieżki ruchu przeciwnika po wyrzuceniu.</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem system power-upów wpływających na statystyki gracza.</li>
-                            <li><i class="fa-solid fa-code"></i> Zaimplementowałem system staminy z dynamiczną regeneracją i kosztami akcji.</li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="fall.f1">  Stworzyłem system pathfindingu oparty na algorytmie A, zintegrowany z Tilemap, umożliwiający dynamiczne wyznaczanie tras.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="fall.f2">  Stworzyłem różnorodne mechaniki ataków wież, obejmujące odmienne style obrażeń i logikę celowania.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="fall.f3">  Zaimplementowałem systemy UI oraz mechaniki życia, ekonomii i zarządzania wieżami.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="fall.f4">  Stworzyłem system „grab & throw”, w której można podnosić wyznaczone przedmioty oraz nimi rzucać.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="fall.f5">  Udoskonaliłem „grab & throw” z zapamiętywaniem ostatniej ścieżki ruchu przeciwnika po wyrzuceniu.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="fall.f6"> Stworzyłem system power-upów wpływających na statystyki gracza.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="fall.f7">  Zaimplementowałem system staminy z dynamiczną regeneracją i kosztami akcji.</span></li>
                         </ul>
                     </div>
                     
@@ -415,20 +422,20 @@
                 <!-- Prawa strona - informacje -->
                 <div class="info-column">
                     <h2 class="game-detail-title">Welcome User</h2>
-                    <p class="game-detail-description">Gra oferująca interakcję z otoczeniem, kontrolę ekranów oraz rozgrywkę skoncentrowaną na eliminowaniu wirusa...</p>
+                    <p class="game-detail-description" data-i18n="welcome.desc">Gra oferująca interakcję z otoczeniem, kontrolę ekranów oraz rozgrywkę skoncentrowaną na eliminowaniu wirusa...</p>
                     
                     <div class="game-features">
-                        <h3>Moja rola:</h3>
+                        <h3 data-i18n="common.MyRole">Moja rola:</h3>
                         <ul class="feature-list">
-                            <li><i class="fa-solid fa-code"></i> Programista Unity (C#) odpowiedzialny za implementację mechanik rozgrywki, wsparcie procesu prototypowania.</li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="welcome.role1"> Programista Unity (C#) odpowiedzialny za implementację mechanik rozgrywki, wsparcie procesu prototypowania.</span></li>
                         </ul>
-                        <h3>Zakres prac:</h3>
+                        <h3 data-i18n="common.scopeOfWork">Zakres prac:</h3>
                          <ul class="feature-list">
-                            <li><i class="fa-solid fa-code"></i> Tworzenie i rozwój elementów gameplayu</li>
-                            <li><i class="fa-solid fa-code"></i> Praca z eventami i ScriptableObjects do modularnego zarządzania logiką i danymi.</li>
-                            <li><i class="fa-solid fa-code"></i> Tworzenie i modyfikacja shaderów w HLSL</li>
-                            <li><i class="fa-solid fa-code"></i> Pisanie modularnego i skalowalnego kodu w C#</li>
-                            <li><i class="fa-solid fa-code"></i> Praca zespołowa z użyciem Plastic SCM</li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="welcome.s1"> Tworzenie i rozwój elementów gameplayu</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="welcome.s2"> Praca z eventami i ScriptableObjects do modularnego zarządzania logiką i danymi.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="welcome.s3"> Tworzenie i modyfikacja shaderów w HLSL</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="welcome.s4"> Pisanie modularnego i skalowalnego kodu w C#</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="welcome.s5">Praca zespołowa z użyciem Plastic SCM</span></li>
                         </ul>
                     </div>
                     
@@ -442,7 +449,7 @@
                     </div>
                     
                     <div class="game-links">
-                        <a href="https://welcomeuser.pl/" class="btn"><i class="fas fa-external-link-alt"></i> Strona "Welcome User"</a>
+                        <a href="https://welcomeuser.pl/" class="btn"><i class="fas fa-external-link-alt"></i><span data-i18n="welcome.link"> Strona "Welcome User"</span></a>
                     </div>
                 </div>
             </div>
@@ -522,14 +529,14 @@
                     <div class="game-features">
                         <h3>Stworzone mechaniki:</h3>
                         <ul class="feature-list">
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem system życia, many i staminy z możliwością ulepszania statystyk oraz systemem mikstur przywracających zasoby.</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem system statystyk (HP, CRIT, Movement Speed, Attack Power, Max Stamina, Max Mana) połączony z mechaniką levelowania.</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem system umiejętności inspirowany mechaniką działania z "League of Legends".</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem AI bossa z różnymi zestawami ataków, reagujące dynamicznie na działania gracza.</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem kapliczkę dającą losowe, czasowe wzmocnienia po aktywacji. Inspirowana kapliczką/ołtarzem z "Path of Exile". </li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem system uniku (roll) oraz obsługę ataków z dynamiczną zmianą broni.</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem system questów o modularnej budowie, umożliwiający łatwe projektowanie i dodawanie nowych zadań do gry.</li>
-                            <li><i class="fa-solid fa-code"></i> Stworzyłem ekrany UI pokazujące na bieżąco statystyki gracza, levelowanie, umiejętności i questy.</li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="mech.f1"> Stworzyłem system życia, many i staminy z możliwością ulepszania statystyk oraz systemem mikstur przywracających zasoby.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="mech.f2"> Stworzyłem system statystyk (HP, CRIT, Movement Speed, Attack Power, Max Stamina, Max Mana) połączony z mechaniką levelowania.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="mech.f3"> Stworzyłem system umiejętności inspirowany mechaniką działania z "League of Legends".</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="mech.f4"> Stworzyłem AI bossa z różnymi zestawami ataków, reagujące dynamicznie na działania gracza.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="mech.f5"> Stworzyłem kapliczkę dającą losowe, czasowe wzmocnienia po aktywacji. Inspirowana kapliczką/ołtarzem z "Path of Exile". </span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="mech.f6"> Stworzyłem system uniku (roll) oraz obsługę ataków z dynamiczną zmianą broni.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="mech.f7"> Stworzyłem system questów o modularnej budowie, umożliwiający łatwe projektowanie i dodawanie nowych zadań do gry.</span></li>
+                            <li><i class="fa-solid fa-code"></i><span data-i18n="mech.f8"> Stworzyłem ekrany UI pokazujące na bieżąco statystyki gracza, levelowanie, umiejętności i questy.</span></li>
                         </ul>
                     </div>
                     
@@ -558,7 +565,7 @@
             <a href="https://x.com/home"><i class="fab fa-x"></i></a>
             <a href="https://www.youtube.com/@rafarokowski7064"><i class="fab fa-youtube"></i></a>
         </div>
-        <p>&copy; 2025 Rółkowski Rafał. Wszystkie prawa zastrzeżone.</p>
+        <p data-i18n="common.rights">&copy; 2025 Rółkowski Rafał. Wszystkie prawa zastrzeżone.</p>
     </div>
 </footer>
     </section>
@@ -567,6 +574,7 @@
     
 </body>
 </html>
+
 
 
 
