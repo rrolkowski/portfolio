@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+    <script>
+        history.scrollRestoration = "manual";
+    </script>
+    
+</head>
+<body>  
+    <!-- Stały przycisk powrotu do portfolio -->
+    <div id="back-to-portfolio" class="back-to-portfolio-btn">
+        <i class="fas fa-arrow-left"></i>
+        <span>Moje Projekty</span>
+    </div>
+    <!-- Sekcja główna -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <h1>Rółkowski Rafał</h1>
+                <h2>GAMEPLAY PROGRAMMER</h2>
+                <p class="description">Specjalizuję się jako Gameplay Programmer z pasją do AI w grach. Pracuję głównie w Unity, pisząc kod w C#. Moje doświadczenie obejmuje projektowanie mechanik gracza, przeciwników AI oraz systemów nawigacji.</p>
+                
+                <!-- Technical Skills -->
+                <div class="skills-section">
+                    <h3 class="skills-title">Technical Skills</h3>
+                    <div class="skills-row">
+                        <div class="skill-card">
+                            <i class="fab fa-unity"></i>
+                            <span>UNITY</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="devicon-csharp-plain"></i>
+                            <span>C#</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fa-brands fa-uncharted"></i>
+                            <span>BASIC UNREAL ENGINE</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="devicon-cplusplus-plain"></i>
+                            <span>BASIC C++</span>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fab fa-git-alt"></i>
+                            <span>GIT</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#portfolio" class="btn">Zobacz moje projekty</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Sekcja portfolio -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Moje Projekty</h2>
+            <div class="games-grid">
+                <!-- Laser Defender -->
+                <div class="game-card" onclick="scrollToGame('laser-defender')">
+                    <div class="game-image">
+                        <img src="images/laser-defender.jpg" alt="Laser Defender" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder">
+                            <i class="fas fa-dragon"></i>
+                        </div>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Laser Defender</h3>
+                        <p class="game-description">Klasyczny space shooter 2D</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">2D</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Out of The Madness -->
+                <div class="game-card" onclick="scrollToGame('ootm')">
+                    <div class="game-image">
+                        <img src="images/ootm.jpg" alt="Out of The Madness" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Out of The Madness</h3>
+                        <p class="game-description">Niekończąca się gra zręcznościowa</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">2.5D</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fall Throne -->
+                <div class="game-card" onclick="scrollToGame('fall-throne')">
+                    <div class="game-image">
+                        <img src="images/fall-throne.jpg" alt="Fall Throne" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Fall Throne</h3>
+                        <p class="game-description">Tower defense gdzie można przenosić wszystko!</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">3D</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Welcome User -->
+                <div class="game-card" onclick="scrollToGame('welcome-user')">
+                    <div class="game-image">
+                        <img src="images/welcome-user-main.jpg" alt="Welcome User" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Welcome User</h3>
+                        <p class="game-description">...</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">3D</span>
+                            <span class="tech-tag">2D</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gameplay Mechanics Showcase -->
+                <div class="game-card" onclick="scrollToGame('mechanics-showcase')">
+                    <div class="game-image">
+                        <img src="images/mechanics-main.jpg" alt="Gameplay Mechanics" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Gameplay Mechanics</h3>
+                        <p class="game-description">Kolekcja moich mechanik rozgrywki do gry hack-and-slash</p>
+                        <div class="game-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Systems</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+   <!-- Sekcja Laser Defender -->
+<section id="laser-defender" class="game-detail-section">
+    <div class="container">
+        <div class="improved-game-layout">
+            <!-- Lewa strona - obrazki -->
+            <div class="images-column">
+                <!-- EKRAN POGLĄDOWY -->
+               <div class="main-image">
+                        <img src="images/laser-defender.jpg" alt="Laser Defender">
+                        <div class="image-placeholder-large" style="display: none;">
+                        <i class="fas fa-dragon"></i>
+                        </div>
+                    </div>
+                
+                <!-- MAŁE OBRAZKI -->
+                <div class="small-images-row">
+                    <div class="small-img active" data-image="images/laser-defender.jpg">
+                        <img src="images/laser-defender.jpg" alt="Screenshot 1">
+                        <div class="image-placeholder-small">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="small-img" data-image="images/Space-3a.gif">
+                        <img src="images/Space-3a.gif" alt="Screenshot 2">
+                        <div class="image-placeholder-small">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="small-img" data-image="images/Space-2a.gif">
+                        <img src="images/Space-2a.gif" alt="Screenshot 3">
+                        <div class="image-placeholder-small">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="small-img" data-image="images/Space-1a.gif">
+                        <img src="images/Space-1a.gif" alt="Screenshot 4">
+                        <div class="image-placeholder-small">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Prawa strona - informacje -->
+            <div class="info-column">
+                <h2 class="game-detail-title">Laser Defender</h2>
+                <p class="game-detail-description">Laser Defender to klasyczny space shooter 2D, w którym sterujesz statkiem kosmicznym, eliminujesz fale wrogów i zbierasz punkty</p>
+                
+                <div class="game-features">
+                    <h3>Stworzone funkcje:</h3>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-code"></i> Stworzyłem logikę sterowania statkiem gracza</li>
+                        <li><i class="fa-solid fa-code"></i> Zaimplementowałem przeciwników z czasowym wyprowadzaniem ataków</li>
+                        <li><i class="fa-solid fa-code"></i> Zaprogramowałem system fal przeciwników z rosnącym poziomem trudności</li>
+                        <li><i class="fa-solid fa-code"></i> Zoptymalizowałem wydajność dla płynnej rozgrywki na PC oraz na urządzenia mobilne</li>
+                        <li><i class="fa-solid fa-palette"></i> Stworzyłem grafikę i VFX</li>
+                        <li><i class="fa-solid fa-compass-drafting"></i> Zaprojektowałem interfejs użytkownika </li>
+                    </ul>
+                </div>
+                
+                <div class="game-tech">
+                    <span class="tech-tag">Solo Developer</span>
+                    <span class="tech-tag">Unity Engine</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">Procreate</span>
+                    <span class="tech-tag">PC</span>
+                    <span class="tech-tag">Android</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+       <!-- Sekcja Out of The Madness -->
+<section id="ootm" class="game-detail-section">
+    <div class="container">
+        <div class="improved-game-layout">
+            <!-- Lewa strona - obrazki -->
+            <div class="images-column">
+                <!-- EKRAN POGLĄDOWY -->
+                <div class="main-image">
+                    <img src="images/ootm-1.gif" alt="Out of The Madness">
+                    <div class="image-placeholder-large" style="display: none;">
+                    <i class="fas fa-robot"></i> <!-- Zmień ikonkę dla różnicy -->
+                    </div>
+                </div>
+                
+                <!-- MAŁE OBRAZKI -->
+                <div class="small-images-row">
+                    <div class="small-img active" data-image="images/ootm-1.gif">
+                        <img src="images/ootm-1.gif" alt="view 1">
+                        <div class="image-placeholder-small">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="small-img" data-image="images/ootm-2.gif">
+                        <img src="images/ootm-2.gif" alt="view 2">
+                        <div class="image-placeholder-small">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="small-img" data-image="images/ootm-3.gif">
+                        <img src="images/ootm-3.gif" alt="view 3">
+                        <div class="image-placeholder-small">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="small-img" data-image="images/ootm-4.gif">
+                        <img src="images/ootm-4.gif" alt="view 4">
+                        <div class="image-placeholder-small">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Prawa strona - informacje -->
+            <div class="info-column">
+                <h2 class="game-detail-title">Out of The Madness</h2>
+                <p class="game-detail-description">An endless runner type arcade game with a psychiatric hospital theme.</p>
+                
+                <div class="game-features">
+                    <h3>Stworzone funkcje:</h3>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-code"></i> Zaprojektowałem i zaimplementowałem główne mechaniki endless runnera.</li>
+                        <li><i class="fa-solid fa-code"></i> Opracowałem system spawnu przeciwników oparty na detekcji ilości obiektów w jednej lini.</li>
+                        <li><i class="fa-solid fa-code"></i> Zaimplementowałem system punktacji opartą na czasie. (wynik punktów w metrach)</li>
+                        <li><i class="fa-solid fa-code"></i> Zoptymalizowałem wydajność gry dla płynnego działania w Unity.</li>
+                        <li><i class="fa-solid fa-code"></i> Stworzyłem mechanikę boosta opartą na zbieraniu strzykawek i aktywacji czasowych bonusów.</li>
+                        <li><i class="fa-solid fa-palette"></i> Stworzyłem oprawę graficzną w klimacie szpitala psychiatrycznego, wzmacniającą atmosferę rozgrywki.</li>
+                    </ul>
+                </div>
+                
+                <div class="game-tech">
+                    <span class="tech-tag">Solo Developer</span>
+                    <span class="tech-tag">Unity Engine</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">Aseprite</span>
+                    <span class="tech-tag">PC</span>          
+                </div>
+                
+                <div class="game-links">
+                    <a href="https://rolkowski.itch.io/out-of-the-madness" class="btn"><i class="fas fa-play"></i> Itch.io</a>
+                    <a href="https://github.com/A218X3S6/Out-Of-The-Madness" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Sekcja Fall Throne -->
+    <section id="fall-throne" class="game-detail-section">
+    <div class="container">
+        <div class="improved-game-layout">
+            <!-- LEWA STRONA - VIDEO -->
+            <div class="images-column">
+                <div class="video-container">
+                    <iframe 
+                        id="fall-throne-video"
+                        src="https://www.youtube.com/embed/syml9wG6tM8?si=QOBhgOoxcSytRvhy&mute=1&loop=1&enablejsapi=1"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- PRAWA STRONA - INFORMACJE -->
+            <div class="info-column">
+                <h2 class="game-detail-title">Fall Throne</h2>
+                <p class="game-detail-description">A TOWER DEFENSE GAME WHERE YOU CAN CARRY ANYTHING!</p>
+                    
+                    <div class="game-features">
+                        <h3>Stworzone funkcje:</h3>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem system pathfindingu oparty na algorytmie A, zintegrowany z Tilemap, umożliwiający dynamiczne wyznaczanie tras.</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem różnorodne mechaniki ataków wież, obejmujące odmienne style obrażeń i logikę celowania.</li>
+                            <li><i class="fa-solid fa-code"></i> Zaimplementowałem systemy UI oraz mechaniki życia, ekonomii i zarządzania wieżami.</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem system „grab & throw”, w której można podnosić wyznaczone przedmioty oraz nimi rzucać.</li>
+                            <li><i class="fa-solid fa-code"></i> Udoskonaliłem „grab & throw” z zapamiętywaniem ostatniej ścieżki ruchu przeciwnika po wyrzuceniu.</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem system power-upów wpływających na statystyki gracza.</li>
+                            <li><i class="fa-solid fa-code"></i> Zaimplementowałem system staminy z dynamiczną regeneracją i kosztami akcji.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="game-tech">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">3D</span>
+                        <span class="tech-tag">PC</span>
+                        <span class="tech-tag">Git/SourceTree</span>
+                    </div>
+                    <div class="game-links">
+                    <a href="https://jasnygwint.itch.io/fallthrone" class="btn"><i class="fas fa-play"></i> Itch.io</a>
+                </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+    <!-- Sekcja Welcome User -->
+    <section id="welcome-user" class="game-detail-section">
+        <div class="container">
+            <div class="improved-game-layout">
+                <!-- Lewa strona - obrazki -->
+                <div class="images-column">
+                    <!-- EKRAN POGLĄDOWY -->
+                    <div class="main-image">
+                        <img src="images/welcome-user-main.jpg" alt="Welcome User System">
+                        <div class="image-placeholder-large" style="display: none;">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- MAŁE OBRAZKI - 8 ELEMENTÓW -->
+                    <div class="small-images-row extended-gallery">
+                        <div class="small-img active" data-image="images/welcome-user-main.jpg">
+                            <img src="images/welcome-user-main.jpg" alt="Welcome Screen">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/welcome-1.jpg">
+                            <img src="images/welcome-1.jpg" alt="Welcome 1">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/welcome-2.jpg">
+                            <img src="images/welcome-2.jpg" alt="Welcome-2">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/welcome-3.jpg">
+                            <img src="images/welcome-3.jpg" alt="Welcome 3">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prawa strona - informacje -->
+                <div class="info-column">
+                    <h2 class="game-detail-title">Welcome User</h2>
+                    <p class="game-detail-description">Gra oferująca interakcję z otoczeniem, kontrolę ekranów oraz rozgrywkę skoncentrowaną na eliminowaniu wirusa...</p>
+                    
+                    <div class="game-features">
+                        <h3>Moja rola:</h3>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-code"></i> Programista Unity (C#) odpowiedzialny za implementację mechanik rozgrywki, wsparcie procesu prototypowania.</li>
+                        </ul>
+                        <h3>Zakres prac:</h3>
+                         <ul class="feature-list">
+                            <li><i class="fa-solid fa-code"></i> Tworzenie i rozwój elementów gameplayu</li>
+                            <li><i class="fa-solid fa-code"></i> Praca z eventami i ScriptableObjects do modularnego zarządzania logiką i danymi.</li>
+                            <li><i class="fa-solid fa-code"></i> Tworzenie i modyfikacja shaderów w HLSL</li>
+                            <li><i class="fa-solid fa-code"></i> Pisanie modularnego i skalowalnego kodu w C#</li>
+                            <li><i class="fa-solid fa-code"></i> Praca zespołowa z użyciem Plastic SCM</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="game-tech">
+                        <span class="tech-tag">Unity Engine</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">3D</span>
+                        <span class="tech-tag">2D</span>
+                        <span class="tech-tag">Team Project</span>
+                        <span class="tech-tag">Plastic SCM</span>
+                    </div>
+                    
+                    <div class="game-links">
+                        <a href="https://welcomeuser.pl/" class="btn"><i class="fas fa-external-link-alt"></i> Strona "Welcome User"</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Gameplay Mechanics Showcase -->
+    <section id="mechanics-showcase" class="game-detail-section">
+        <div class="container">
+            <div class="improved-game-layout">
+                <!-- Lewa strona - obrazki -->
+                <div class="images-column">
+                    <!-- EKRAN POGLĄDOWY -->
+                    <div class="main-image">
+                        <img src="images/mechanics-main.gif" alt="Gameplay Mechanics Showcase">
+                        <div class="image-placeholder-large" style="display: none;">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- MAŁE OBRAZKI - 8 ELEMENTÓW -->
+                    <div class="small-images-row extended-gallery">
+                        <div class="small-img active" data-image="images/mechanics-main.gif">
+                            <img src="images/mechanics-main.gif" alt="Main Showcase">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/mech-1.gif">
+                            <img src="images/mech-1.gif" alt="AI Pathfinding">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/mech-2.gif">
+                            <img src="images/mech-2.gif" alt="Physics System">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/mech-3.gif">
+                            <img src="images/mech-3.gif" alt="Combat Mechanics">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/mech-4.gif">
+                            <img src="images/mech-4.gif" alt="Inventory System">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/mech-5.gif">
+                            <img src="images/mech-5.gif" alt="Dialogue System">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/mech-6.gif">
+                            <img src="images/mech-6.gif" alt="Puzzle Mechanics">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="small-img" data-image="images/mech-7.gif">
+                            <img src="images/mech-7.gif" alt="Animation System">
+                            <div class="image-placeholder-small">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Prawa strona - informacje -->
+                <div class="info-column">
+                    <h2 class="game-detail-title">Gameplay Mechanics</h2>     
+                    <div class="game-features">
+                        <h3>Stworzone mechaniki:</h3>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem system życia, many i staminy z możliwością ulepszania statystyk oraz systemem mikstur przywracających zasoby.</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem system statystyk (HP, CRIT, Movement Speed, Attack Power, Max Stamina, Max Mana) połączony z mechaniką levelowania.</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem system umiejętności inspirowany mechaniką działania z "League of Legends".</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem AI bossa z różnymi zestawami ataków, reagujące dynamicznie na działania gracza.</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem kapliczkę dającą losowe, czasowe wzmocnienia po aktywacji. Inspirowana kapliczką/ołtarzem z "Path of Exile". </li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem system uniku (roll) oraz obsługę ataków z dynamiczną zmianą broni.</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem system questów o modularnej budowie, umożliwiający łatwe projektowanie i dodawanie nowych zadań do gry.</li>
+                            <li><i class="fa-solid fa-code"></i> Stworzyłem ekrany UI pokazujące na bieżąco statystyki gracza, levelowanie, umiejętności i questy.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="game-tech">
+                        <span class="tech-tag">Unity Engine</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">AI Programming</span>
+                        <span class="tech-tag">Physics</span>
+                        <span class="tech-tag">Animation</span>
+                        <span class="tech-tag">Systems</span>
+                    </div>
+                    
+                    <div class="game-links">
+                        <a href="https://github.com/rrolkowski/Gameplay-Mechanics.git" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stopka -->
+        <footer>
+    <div class="container">
+        <div class="social-links">
+            <a href="https://github.com/A218X3S6"><i class="fab fa-github"></i></a>
+            <a href="https://pl.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/home"><i class="fab fa-x"></i></a>
+            <a href="https://www.youtube.com/@rafarokowski7064"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2025 Rółkowski Rafał. Wszystkie prawa zastrzeżone.</p>
+    </div>
+</footer>
+    </section>
+    
+     <script src="script.js"></script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
