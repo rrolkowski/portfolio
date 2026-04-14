@@ -140,18 +140,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const smallImages = smallImagesRow.querySelectorAll(".small-img");
 
         smallImages.forEach((smallImg) => {
-            smallImg.addEventListener("click", function () {
-                const clickedImage = this.querySelector("img");
-                const mainImage = this.closest(".images-column").querySelector(".main-image img");
+        smallImg.addEventListener("click", function () {
+        const mainContainer = this.closest(".images-column").querySelector(".main-image");
+        const type = this.dataset.type || "image";
+        const src = this.dataset.src || this.querySelector("img")?.src;
 
-                if (mainImage && clickedImage && clickedImage.src) {
-                    mainImage.src = clickedImage.src;
+        if (!mainContainer || !src) return;
 
-                    smallImages.forEach((img) => img.classList.remove("active"));
-                    this.classList.add("active");
-                }
-            });
-        });
+        if (type === "video") {
+            mainContainer.innerHTML = `
+                <video autoplay muted loop playsinline controls>
+                    <source src="${src}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        } else {
+            mainContainer.innerHTML = `
+                <img src="${src}" alt="Preview">
+            `;
+        }
+
+        smallImages.forEach((img) => img.classList.remove("active"));
+        this.classList.add("active");
     });
 });
 
