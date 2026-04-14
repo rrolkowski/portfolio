@@ -134,37 +134,31 @@ h2 {
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(5, 360px);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
-    justify-content: center;
+    align-items: stretch;
 }
 
-@media (max-width: 1500px) {
+
+@media (max-width: 768px) {
     .games-grid {
-        grid-template-columns: repeat(4, 280px);
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 480px) {
     .games-grid {
-        grid-template-columns: repeat(3, 280px);
+        grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 900px) {
-    .games-grid {
-        grid-template-columns: repeat(2, 280px);
-    }
-}
-
-@media (max-width: 600px) {
-    .games-grid {
-        grid-template-columns: 280px;
-    }
-}
 
 .game-card {
     background: rgba(30, 30, 60, 0.7);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -210,6 +204,9 @@ h2 {
 
 .game-content {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .game-title {
@@ -227,6 +224,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: auto;
 }
 
 .tech-tag {
@@ -787,51 +785,3 @@ footer {
         height: 70px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
