@@ -134,34 +134,36 @@ document
         appearObserver.observe(el);
     });
 
-// Zamiana obrazków w galeriach
+// Zamiana obrazków i video w galeriach
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".small-images-row").forEach((smallImagesRow) => {
         const smallImages = smallImagesRow.querySelectorAll(".small-img");
 
         smallImages.forEach((smallImg) => {
-        smallImg.addEventListener("click", function () {
-        const mainContainer = this.closest(".images-column").querySelector(".main-image");
-        const type = this.dataset.type || "image";
-        const src = this.dataset.src || this.querySelector("img")?.src;
+            smallImg.addEventListener("click", function () {
+                const mainContainer = this.closest(".images-column").querySelector(".main-image");
+                const type = this.dataset.type || "image";
+                const src = this.dataset.src || this.dataset.image || this.querySelector("img")?.src;
 
-        if (!mainContainer || !src) return;
+                if (!mainContainer || !src) return;
 
-        if (type === "video") {
-            mainContainer.innerHTML = `
-                <video autoplay muted loop playsinline controls>
-                    <source src="${src}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            `;
-        } else {
-            mainContainer.innerHTML = `
-                <img src="${src}" alt="Preview">
-            `;
-        }
+                if (type === "video") {
+                    mainContainer.innerHTML = `
+                        <video autoplay muted loop playsinline controls>
+                            <source src="${src}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                } else {
+                    mainContainer.innerHTML = `
+                        <img src="${src}" alt="Preview">
+                    `;
+                }
 
-        smallImages.forEach((img) => img.classList.remove("active"));
-        this.classList.add("active");
+                smallImages.forEach((img) => img.classList.remove("active"));
+                this.classList.add("active");
+            });
+        });
     });
 });
 
@@ -196,4 +198,3 @@ window.addEventListener("load", () => {
     currentIndex = 0;
     updateBackToPortfolioButton();
 });
-
